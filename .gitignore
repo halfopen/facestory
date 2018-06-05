@@ -1,0 +1,6 @@
+*.zip
+# ignore python virtualenv and pyc files
+*.bak
+*.pyc
+src/facestoryserver/venv/
+src/facestoryserver/__pycache__/

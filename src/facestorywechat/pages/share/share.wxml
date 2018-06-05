@@ -1,0 +1,11 @@
+<!--pages/share/share.wxml-->
+<view class='container'>
+
+    <view><image src='/images/baidu/timg_4.jpeg'></image></view>
+
+    <view ><text>今日气色佳，心情愉悦，万事顺心．
+湿气有点重，天气晴朗，宜晒太阳，吃xx,散步运动
+　　　　　　　　　　　　2017-05-25</text></view>
+
+    <view><image>二维码</image></view>
+</view>

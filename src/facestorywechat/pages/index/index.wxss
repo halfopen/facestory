@@ -1,0 +1,44 @@
+/**index.wxss**/
+page{
+    background: white;
+}
+.container{
+  padding-top: 0;
+}
+
+.desc{
+  padding: 40rpx 0;
+}
+
+.btn-selfie{
+  height:100rpx;
+  width:300rpx;
+  margin-top: 15rpx;
+}
+.btn-selfie-container{
+  text-align: center;
+  height: 100rpx;
+  line-height: 100rpx;
+  padding: 2rpx;
+}
+.btn-selfie-container text{
+  /* padding-left:60rpx; */
+}
+
+.btn-selfie image{
+  width: 40rpx;
+  height: 40rpx;
+  padding-top: 30rpx;
+  padding-right: 10rpx;
+  position: absolute;
+}
+
+.choose-gallery-container{
+  text-align: center;
+}
+
+.choose-gallery{
+  color:#E51C23;
+  cursor: pointer;
+  margin: 4rpx;
+}

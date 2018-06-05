@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<title>Upload File</title>
+<h1>图片上传</h1>
+<form method="POST" enctype="multipart/form-data" action="/detect">
+     {{ form.hidden_tag() }}
+     {{ form.photo }}
+     {% for error in form.photo.errors %}
+         <span style="color: red;">{{ error }}</span>
+     {% endfor %}
+     {{ form.submit }}
+</form>

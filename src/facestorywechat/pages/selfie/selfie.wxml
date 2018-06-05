@@ -1,0 +1,4 @@
+<camera device-position="back" flash="off" binderror="error" style="width: 100%; height: 100%;"></camera>
+<button bindtap='takePhoto' class='btn-take-photo' type="default" bindtap="takePhoto"></button>
+<view>预览</view>
+<image mode="widthFix" src="{{src}}"></image>

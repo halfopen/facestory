@@ -1,0 +1,51 @@
+<!--pages/selfie_result/selfie_result.wxml-->
+<view class='container'>
+<!-- 头像框 -->
+<view class="result head-pic"><view class='avatar-container'><image class='avatar-container-image' src='{{head_pic}}'></image></view></view>
+
+<!-- 结果 -->
+<view class='result'>
+    <view class='item-title'><text>精神状态</text><text style='display:none' class="detail-exam">详细诊断></text></view>
+    <view class='item-line'></view>
+    <view class="item-detail">
+      <text>{{emotion}}</text>
+       <text style='display:none'>气色佳，心情愉悦，万事顺心</text>
+    </view>
+</view>
+
+<!-- 结果 -->
+<view class='result'>
+    <view class='item-title'><text>Face Reading</text><text style='display:none' class="detail-exam">详细诊断></text></view>
+    <view class='item-line'></view>
+    <view class="item-detail">
+      <view style='padding-top:20rpx' wx:for="{{face_reading}}" wx:key  ="type">
+        <view>{{item.type}}</view>
+        <text>{{item.detail}}</text>
+      </view>
+    </view>
+</view>
+
+<!-- 结果 -->
+<view class='result'>
+    <view class='item-title'><text>健康状况[假数据]：</text><text class="detail-exam">详细诊断></text></view>
+    <view class='item-line'></view>
+    <view class="item-detail">
+    气虚，肾虚
+        <text>
+        1. 保健原则：益气固表，健脾和胃
+2. 起居养生：早睡早起，保证睡眠充足，四季起居有常；适度运动，避免过度体力劳动．
+3. 饮食药膳：现在是小满，我国古代将小满分为三候：“一候苦菜秀;二候靡草死;三候麦秋至。”《周书》中，即有“小满之日苦菜秀”之说。小满时节的气候较为潮湿，所以适宜食用一些祛湿类的食物，如番茄，西瓜。
+        </text>
+        <view class='image-container'><image src='/images/baidu/fanqie.jpeg' /></view>
+        <text>
+        这是最好的防晒食物。番茄富含抗氧化剂番茄红素，每天摄入16毫克番茄红素可将晒伤的危险系数下降40%。</text>
+        <view class='image-container'><image src='/images/baidu/xigua.jpg' /></view>
+        <text>西瓜含水量在水果中是首屈一指的，所以特别适合补充人体水分的损失。</text>
+    </view>
+</view>
+
+<!-- 分享 -->
+<view class='share-container'>
+  <view class="btn btn-share">分享</view>
+</view>
+</view>
