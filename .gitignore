@@ -4,3 +4,4 @@
 *.pyc
 src/facestoryserver/venv/
 src/facestoryserver/__pycache__/
+src/facestoryserver/.idea/
