@@ -28,8 +28,8 @@ def create_view(app, db):
             上传图片，并返回识别结果
         :return:
         """
-        response_obj = dict()
-        response_obj['data'] = 1
+        res = dict()
+        res['data'] = 1
 
         filename = photos.save(request.files['photo'])
         # 获取原始图片
@@ -72,11 +72,11 @@ def create_view(app, db):
                                detail=Node(contents=health_detail).to_dict()).to_dict()
         results.append(health_result)
 
-        response_obj['face_size'] = face_size
-        response_obj['results'] = results
-        response_obj['image_url'] = photos.url(filename)
+        res['face_size'] = face_size
+        res['results'] = results
+        res['image_url'] = photos.url(filename)
 
-        story_json = json.dumps(response_obj)
+        story_json = json.dumps(res)
 
         openid = request.args.get("openid")
 
@@ -86,7 +86,6 @@ def create_view(app, db):
             story = FaceStory(openid, story_json)
             db.session.add(story)
             db.session.commit()
-            pass
 
         return Response(story_json, mimetype='application/json')
 
@@ -108,10 +107,64 @@ def create_view(app, db):
 
     @app.route('/get_openid', methods=['GET'])
     def get_openid():
+        """
+            返回用户的openid code 请求完之后失效
+        :return:
+        """
         code = request.args.get("code")
         logging.info(code)
         req = requests.get(GET_APP_ID_URL + code)
         print(req.content)
         return Response(req.content, mimetype='application/json')
+
+    @app.route('/get_my_storys', methods=['GET'])
+    def get_my_storys():
+        """
+            查看用户的记录
+        :return:
+        """
+        res = []
+        openid = request.args.get('openid')
+        storys = FaceStory.query.filter_by(openid=openid).all()
+        print(storys)
+        for s in storys:
+            res.append(s.to_dict())
+            print(s.to_dict())
+        return Response(json.dumps(res), mimetype='application/json')
+
+    @app.route('/get_square_storys', methods=['GET'])
+    def get_square_storys():
+        """
+            查看用户的记录
+        :return:
+        """
+        res = []
+        storys = FaceStory.query.filter_by(in_square=True).all()
+        print(storys)
+        for s in storys:
+            res.append(s.to_dict())
+            print(s.to_dict())
+        return Response(json.dumps(res), mimetype='application/json')
+
+    @app.route('/get_story', methods=['GET'])
+    def get_story():
+        res = dict()
+        story_id = request.args.get('id')
+        story = FaceStory.query.filter_by(id=story_id).first()
+        if story is not None:
+            res = story.to_dict()
+        return Response(json.dumps(res), mimetype='application/json')
+
+    @app.route('/share_to_square', methods=['GET'])
+    def share_to_square():
+        res = dict()
+        story_id = request.args.get('id')
+        story = FaceStory.query.filter_by(id=story_id).first()
+        if story is not None:
+            story.in_square = True
+            db.session.add(story)
+            db.session.commit()
+            res = story.to_dict()
+        return Response(json.dumps(res), mimetype='application/json')
 
     return app
