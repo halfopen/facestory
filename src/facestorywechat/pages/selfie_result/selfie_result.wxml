@@ -1,7 +1,11 @@
 <!--pages/selfie_result/selfie_result.wxml-->
 <view class='container'>
 <!-- 头像框 -->
-<view class="result head-pic"><view class='avatar-container'><image class='avatar-container-image' src='{{head_pic}}'></image></view></view>
+<view class="result head-pic">
+    <view class='avatar-container'>
+        <image class='avatar-container-image' src='{{head_pic}}'></image>
+    </view>
+</view>
 
 <!-- 结果 -->
 <view class='result' wx:for="{{results}}">
@@ -22,9 +26,13 @@
         </view>
     </view>
 </view>
-
+<!-- 点赞 -->
+<view class="like-container">
+    <image src="/images/heart_grey.png" />
+    <text>12</text>
+</view>
 <!-- 分享 -->
 <view class='share-container'>
-  <view class="btn btn-share">分享</view>
+  <view class="btn btn-share">分享给好友</view><view class="btn btn-share">分享到广场</view>
 </view>
 </view>

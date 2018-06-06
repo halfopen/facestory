@@ -1,1 +1,78 @@
 /* pages/my/my.wxss */
+page{
+
+}
+.container{
+    padding: 0;
+
+}
+
+.head-pic-container{
+    width: 100%;
+    padding: 20rpx 40rpx;
+    min-height:300rpx;
+    background:#fff;
+}
+
+.user-avatar{
+    width: 120rpx;
+    height: 120rpx;
+    border: 1px solid blue;
+    border-radius: 120rpx;
+    overflow: hidden;
+    position:relative;
+    margin-left:50%;
+    left:-60rpx;
+
+}
+
+.user-nick-name{
+    text-align: center;
+    padding-top: 20rpx;
+}
+
+.my-story-container{
+    border-radius: 20rpx;
+    min-height: 200rpx;
+    padding:20rpx 10rpx;
+    width: 100%;
+    margin:auto 40rpx;
+    text-align: center;
+    padding-top: 0;
+}
+
+.my-story-item{
+    background:white;
+    border-radius:8px;
+    min-height:100rpx;
+    box-shadow:1px 2px 3px #dddddd;
+    padding:10rpx 0rpx;
+    margin:10rpx;
+    width:30%;
+    display:inline-block;
+    float: left;
+}
+
+.my-story-item-image image{
+    width: 200rpx;
+    height: 200rpx;
+    box-shadow:1px 2px 3px #dddddd;
+    border-radius:20rpx;
+
+}
+
+.my-story-item-time{
+    font-size: xx-small;
+}
+
+.my-story-item-desc{
+    font-size: small;
+    overflow: hidden;  
+    white-space:nowrap;     
+    text-overflow: ellipsis;  
+}
+
+.my-story-title{
+    background: white;
+    border-radius:10rpx 10rpx 40rpx 40rpx;
+}

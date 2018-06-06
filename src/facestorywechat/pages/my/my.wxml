@@ -1,2 +1,20 @@
 <!--pages/my/my.wxml-->
-<text>pages/my/my.wxml</text>
+<view class="container">
+    <view class="head-pic-container">
+        <view class="user-avatar"><open-data type="userAvatarUrl"></open-data></view>
+        <view class="user-nick-name"><open-data type="userNickName"></open-data></view>
+    </view>
+    <!-- 我的自拍记录 -->
+    <view class="my-story-container">
+        <view class="my-story-title"><text>我的拍照记录</text></view>
+        <view class="my-story-item"  wx:for="{{my_storys}}" story_id = "{{item.id}}">
+            <!-- 参数需要以data-开头 -->
+            <view >
+                <view  class="my-story-item-image"><image data-id='{{index}}' data-story-id="{{item.id}}" bindtap='clickStory'  src="{{item.story_json.image_url}}" /></view>
+                <view class="my-story-item-desc"><text>气虚，肾虚. 起居养生：早睡早起，保证睡眠充足，四季起居有常；适度运动，避免过度体力劳动</text></view>
+                <view data-id='{{index}}' data-story-id="{{item.id}}" bindtap='clickStory'  class="my-story-item-time" >{{item.date}}</view>
+            </view>
+        </view>
+    </view>
+
+</view>

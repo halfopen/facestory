@@ -1,5 +1,5 @@
 // pages/selfie_result/selfie_result.js
-
+let has_option_result = false;
 Page({
 
   /**
@@ -22,6 +22,31 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+      console.log(options.result);
+      if('undefined'==typeof(options.result)){
+            has_option_result = false;
+            var _this = this;
+            wx.getStorage({
+                key: 'photo_result',
+                success: function (res) {
+                    //console.log(res.data);
+                    var selfie_result = JSON.parse(res.data);
+                    console.log(selfie_result);
+                    _this.setData({
+                        head_pic: selfie_result.image_url,
+                        results: selfie_result.results
+                    })
+                },
+            })
+      }else{
+          has_option_result = true;
+          let result = JSON.parse(decodeURIComponent(options.result));
+          console.log(result);
+          this.setData({
+              head_pic: result.image_url,
+              results: result.results
+          })
+      }
       
   },
 
@@ -29,19 +54,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    var _this = this;
-    wx.getStorage({
-      key: 'photo_result',
-      success: function(res) {
-        //console.log(res.data);
-        var selfie_result = JSON.parse(res.data);
-        console.log(selfie_result);
-        _this.setData({
-             head_pic:selfie_result.image_url,
-             results:selfie_result.results
-        })
-      },
-    })
+    
   },
 
   /**

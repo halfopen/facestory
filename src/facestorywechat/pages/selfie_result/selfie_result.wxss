@@ -53,5 +53,20 @@
 }
 
 .btn-share{
-  
+    float: left;
+    margin: 20rpx;
+}
+
+/* 点赞 */
+.like-container{
+    text-align: center;
+}
+
+.like-container image{
+    width: 50rpx;
+    height: 50rpx;
+    display: block;
+}
+.like-container text{
+    display: block;
 }

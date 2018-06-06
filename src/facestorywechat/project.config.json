@@ -52,6 +52,12 @@
 					"name": "getuserinfo",
 					"pathName": "pages/getuserinfo/getuserinfo",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "my",
+					"pathName": "pages/my/my",
+					"query": ""
 				}
 			]
 		}
