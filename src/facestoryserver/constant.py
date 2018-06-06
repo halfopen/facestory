@@ -13,4 +13,7 @@ LANDMARK_PATH = BASE_DIR+"/trained_models/face_reading/shape_predictor_68_face_l
 
 analysis_json_path = BASE_DIR + '/trained_models/face_reading/analysis.json'
 
+APP_ID = 'wx4b425b0c87a891b7'        # 微信小程序appid
+SECRET = '83e750ced5f0ead5ca0c2a6bbd0051cd'     # 微信小程序secret
 
+GET_APP_ID_URL = 'https://api.weixin.qq.com/sns/jscode2session?appid=' + APP_ID + '&secret=' + SECRET + '&grant_type=authorization_code&js_code='

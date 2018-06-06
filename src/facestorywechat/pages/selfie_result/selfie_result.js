@@ -1,20 +1,28 @@
 // pages/selfie_result/selfie_result.js
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    head_pic:null,
-    face_reading:[],
-    emotion:null
+    head_pic:"/images/baidu/timg_3.jpeg",
+    results:[{
+        item_title:{content:"暂无数据"},
+        item_detail:{
+            contents:[{
+                type:"text",
+                content:"..."
+            }]
+        }
+    }]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+      
   },
 
   /**
@@ -25,18 +33,12 @@ Page({
     wx.getStorage({
       key: 'photo_result',
       success: function(res) {
-        console.log(res.data);
+        //console.log(res.data);
         var selfie_result = JSON.parse(res.data);
         console.log(selfie_result);
-        var face_reading = [];
-        for(var key in selfie_result.face_reading){
-          face_reading.push(selfie_result.face_reading[key]);
-        }
-        console.log(face_reading);
         _this.setData({
-          head_pic:selfie_result.image_url,
-          face_reading: face_reading,
-          emotion:selfie_result.emotion
+             head_pic:selfie_result.image_url,
+             results:selfie_result.results
         })
       },
     })

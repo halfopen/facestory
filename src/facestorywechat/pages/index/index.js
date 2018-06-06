@@ -2,7 +2,7 @@
 //获取应用实例
 const app = getApp()
 
-var config = require('../../config.js');
+let config = require('../../config.js');
 
 /****页面****/
 var clickSelfie = function (e) {
@@ -37,8 +37,9 @@ var choose_photo_callback = function (res) {
     title: '加载中',
     mask:true
   })
+  var openid = app.globalData.openid;
   wx.uploadFile({
-    url: config.FACE_DETECT_API,
+    url: config.FACE_DETECT_API+"?openid="+openid,
     filePath: image_path,
     name: 'photo',
     success: upload_photo_callback,
@@ -102,7 +103,7 @@ Page({
 
   },
   onLoad: function () {
-
+      console.log(app.globalData.userInfo);
   },
 
   // 点击自拍按钮

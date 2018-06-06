@@ -6,7 +6,8 @@
     "pages/my/my",
     "pages/selfie/selfie",
     "pages/selfie_result/selfie_result",
-    "pages/share/share"
+    "pages/share/share",
+    "pages/getuserinfo/getuserinfo"
   ],
   "window":{
     "backgroundTextStyle":"light",

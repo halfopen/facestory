@@ -2,6 +2,7 @@
 .container{
     padding: 20rpx 10rpx;
     margin: auto 40rpx;
+    overflow: visible;
 }
 .avatar-container{
     padding: 20rpx 0rpx;
@@ -45,7 +46,7 @@
     display: inline-block;
 }
 
-.detail-exam{
+.item-more{
     float:right;
     color:#E51C23;
 
