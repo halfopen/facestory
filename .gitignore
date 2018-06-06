@@ -1,4 +1,5 @@
 *.zip
+.*
 # ignore python virtualenv and pyc files
 *.bak
 *.pyc
