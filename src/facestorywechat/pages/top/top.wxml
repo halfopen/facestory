@@ -1,14 +1,8 @@
-<!--pages/find/find.wxml-->
+<!--pages/top/top.wxml-->
 <view class='container'>
+    <view class="top-cover"><text class="cover-top-text">－以今日获得赞数作为排名依据－</text><text class="cover-text">最佳</text></view>
     <view class="my-story-container">
-        <view class="my-story-item top-story-item" bindtap='clickTopStory'>
-            <view>
-                <view class="my-story-item-image"><image src="/images/baidu/timg_3.jpeg" /></view>
-                <view class="my-story-item-desc">最佳排名</view>
-                <view class="my-story-item-time" >2018.06.07</view>
-            </view>
-        </view>
-        <view class="my-story-item"  wx:for="{{shared_storys}}" story_id = "{{item.id}}">
+        <view class="my-story-item"  wx:for="{{top_storys}}" story_id = "{{item.id}}">
             <!-- 参数需要以data-开头 -->
             <view >
                 <view  class="my-story-item-image">
@@ -24,3 +18,4 @@
         </view>
     </view>
 </view>
+

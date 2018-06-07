@@ -1,0 +1,23 @@
+/* pages/top/top.wxss */
+@import "../my/my.wxss";
+
+.top-cover{
+    min-height: 300rpx;
+    background: black;
+    width: 100%;
+    color: white;
+    text-align: center;
+    position: relative;
+}
+
+.cover-top-text{
+    font-size: small;
+}
+.cover-text{
+    position: absolute;
+    top:50%;
+    margin-top:-20rpx;
+    width:100%;
+    left:0;
+
+}

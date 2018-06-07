@@ -5,7 +5,7 @@
         <view class="user-nick-name"><open-data type="userNickName"></open-data></view>
     </view>
     <!-- 我的自拍记录 -->
-    <view class="my-story-container">
+    <view   class="my-story-container">
         <view class="my-story-title"><text>我的拍照记录</text></view>
         <view class="my-story-item"  wx:for="{{my_storys}}" story_id = "{{item.id}}">
             <!-- 参数需要以data-开头 -->

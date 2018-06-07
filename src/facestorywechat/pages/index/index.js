@@ -65,15 +65,10 @@ var upload_photo_callback = function (res) {
     });
     return ;
   }
-  wx.setStorage({
-    key: 'photo_result',
-    data: res.data,
-    success:function(e){
-      wx.navigateTo({
-        url: '/pages/selfie_result/selfie_result'
-      })
-    }
-  });
+  var story = res.data;
+  wx.navigateTo({
+      url: '/pages/selfie_result/selfie_result?story=' + encodeURIComponent(story),
+  })
 }
 
 var upload_photo_fail_callback = function (e) {
@@ -104,6 +99,8 @@ Page({
   },
   onLoad: function () {
       console.log(app.globalData.userInfo);
+
+      
   },
 
   // 点击自拍按钮

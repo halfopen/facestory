@@ -1,6 +1,29 @@
 // pages/my/my.js
 let config = require("../../config.js");
+let utils = require("../../utils/util.js");
 const app = getApp();
+
+/**
+ * 更新我的拍照记录
+ */
+var update_storys = function(_this, is_first){
+    wx.request({
+        url: config.GET_MY_STORYS_API + "?openid=" + app.globalData.openid,
+        success: function (res) {
+            console.log(res.data);
+            _this.setData({
+                my_storys: res.data.reverse()
+            });
+            if(!is_first){
+                wx.showToast({
+                    title: '更新成功',
+                });
+                wx.stopPullDownRefresh();
+            }
+        }
+    });
+}
+
 Page({
 
   /**
@@ -16,15 +39,7 @@ Page({
   onLoad: function (options) {
     console.log("onload");
     var _this = this;
-    wx.request({
-        url: config.GET_MY_STORYS_API+"?openid="+app.globalData.openid,
-        success:function(res){
-            console.log(res.data);
-            _this.setData({
-                my_storys:res.data
-            })
-        }
-    })
+    update_storys(_this, true);
   },
 
   /**
@@ -59,7 +74,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+    update_storys(this, false);
   },
 
   /**
@@ -75,6 +90,7 @@ Page({
   onShareAppMessage: function () {
   
   }, 
+  
 
   clickStory: function (e) {
       let id = e.target.dataset.id;
@@ -82,7 +98,7 @@ Page({
       let story = this.data.my_storys[id];
       console.log(this.data.my_storys);
       wx.navigateTo({
-          url: '/pages/selfie_result/selfie_result?result=' + encodeURIComponent(JSON.stringify(story.story_json)),
+          url: '/pages/selfie_result/selfie_result?story=' + encodeURIComponent(JSON.stringify(story)),
       })
       console.log(this.data.my_storys[id])
   }

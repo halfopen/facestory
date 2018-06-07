@@ -63,6 +63,10 @@ page{
 
 .my-story-item-time{
     font-size: xx-small;
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+
 }
 
 .my-story-item-desc{

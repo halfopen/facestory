@@ -8,7 +8,7 @@ from constant import UPLOAD_DIR, GET_APP_ID_URL
 from face_reading_svm import apply
 from json_objs import Node, Result
 from db import db
-from models import FaceStory
+from models import FaceStory, UserInfo
 import emotion_gender_processor as eg_processor
 import cv2
 import json
@@ -21,6 +21,60 @@ def create_view(app, db):
     photos = UploadSet('photos', IMAGES)
     configure_uploads(app, photos)
     patch_request_class(app)  # set maximum file size, default is 16MB
+
+    @app.route('/user_info', methods=['GET', 'POST'])
+    def user_info():
+        res = dict()
+        if request.method == 'GET':
+            openid = request.args.get('openid')
+            user_info = UserInfo.query.filter_by(openid=openid).first()
+            if user_info is not None:
+                res = user_info.to_dict()
+
+        elif request.method == 'POST':
+            # '{"nickName":"我不是大哥","gender":1,"language":"zh_CN","city":"Xinzhou","province":"Shanxi","country":"China","avatarUrl":"https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eokAGkics0CTDoLhUsukAmy4sTvb167M3kBKyGfYmBv0tj5InBiahpqhgXBaWic1Bz3OYXC2oYHCzNvg/132"}'
+            if request.get_data() is not None:  # wx小程序请求格式
+
+                json_data = str(request.get_data(), encoding="utf-8")
+                json_dict = json.loads(json_data)
+                json_dict.setdefault("")
+
+                openid = json_dict.get('openid')
+                nick_name = json_dict.get('nickName')
+                avatar_url = json_dict.get('avatarUrl')
+                gender = json_dict.get('gender')
+                language = json_dict.get('language')
+                province = json_dict.get('province')
+                country = json_dict.get('country')
+                city = json_dict.get('city')
+
+            else:   # 普通post请求格式
+                openid = request.form.get("openid")
+                nick_name = request.form.get("nick_name")
+                gender = str(request.form.get("gender", type=int, default=0))
+                language = request.form.get("language")
+                city = request.form.get("city")
+                province = request.form.get("province")
+                country = request.form.get("country")
+                avatar_url = request.form.get("avatar_url")
+
+            user_info_obj = UserInfo.query.filter_by(openid=openid).first()
+            if user_info_obj is not None:   # 如果在数据库中已经有记录，则更新记录
+                user_info_obj.nick_name = nick_name
+                user_info_obj.gender = gender
+                user_info_obj.language = language
+                user_info_obj.city = city
+                user_info_obj.province = province
+                user_info_obj.country = country
+                user_info_obj.avartar_url = avatar_url
+            else:
+                user_info_obj = UserInfo(openid, nick_name, gender, language, city, country, avatar_url)
+            db.session.add(user_info_obj)
+            db.session.commit()
+            res = user_info_obj.to_dict()
+        else:
+            pass
+        return Response(json.dumps(res), mimetype='application/json')
 
     @app.route('/detect', methods=['POST'])
     def upload():
@@ -79,13 +133,20 @@ def create_view(app, db):
         story_json = json.dumps(res)
 
         openid = request.args.get("openid")
-
+        print(openid)
         if openid is not None:
             # 保存记录到数据库
-            logging.info("保存用户记录到数据库" + openid)
-            story = FaceStory(openid, story_json)
-            db.session.add(story)
-            db.session.commit()
+            print("保存用户记录到数据库" + openid)
+            print(UserInfo.query.all())
+            user_info = UserInfo.query.filter_by(openid=openid).first()
+            print(user_info)
+            if user_info is not None:
+                story = FaceStory(openid, user_info.nick_name, user_info.avatar_url, story_json)
+                db.session.add(story)
+                db.session.flush()
+                db.session.refresh(story)
+                db.session.commit()
+                return Response(json.dumps(story.to_dict()), mimetype='application/json')
 
         return Response(story_json, mimetype='application/json')
 
@@ -114,7 +175,6 @@ def create_view(app, db):
         code = request.args.get("code")
         logging.info(code)
         req = requests.get(GET_APP_ID_URL + code)
-        print(req.content)
         return Response(req.content, mimetype='application/json')
 
     @app.route('/get_my_storys', methods=['GET'])
@@ -125,29 +185,29 @@ def create_view(app, db):
         """
         res = []
         openid = request.args.get('openid')
-        storys = FaceStory.query.filter_by(openid=openid).all()
-        print(storys)
+        storys = FaceStory.query.filter_by(openid=openid).order_by(FaceStory.in_square).all()
         for s in storys:
             res.append(s.to_dict())
-            print(s.to_dict())
         return Response(json.dumps(res), mimetype='application/json')
 
     @app.route('/get_square_storys', methods=['GET'])
     def get_square_storys():
         """
-            查看用户的记录
+            查看分享到广场的记录
         :return:
         """
         res = []
         storys = FaceStory.query.filter_by(in_square=True).all()
-        print(storys)
         for s in storys:
             res.append(s.to_dict())
-            print(s.to_dict())
         return Response(json.dumps(res), mimetype='application/json')
 
     @app.route('/get_story', methods=['GET'])
     def get_story():
+        """
+            获取某个自拍记录
+        :return:
+        """
         res = dict()
         story_id = request.args.get('id')
         story = FaceStory.query.filter_by(id=story_id).first()
@@ -157,14 +217,38 @@ def create_view(app, db):
 
     @app.route('/share_to_square', methods=['GET'])
     def share_to_square():
+        """
+            分享到广场
+        :return:
+        """
         res = dict()
         story_id = request.args.get('id')
+        in_square = request.args.get('in_square')
         story = FaceStory.query.filter_by(id=story_id).first()
         if story is not None:
-            story.in_square = True
+            if int(in_square) == 0:
+                story.in_square = False
+                print("撤回")
+            else:
+                story.in_square = True
+                print("分享")
             db.session.add(story)
+            db.session.flush()
+            db.session.refresh(story)
             db.session.commit()
             res = story.to_dict()
         return Response(json.dumps(res), mimetype='application/json')
 
+    @app.route('/top_storys', methods=['GET'])
+    def top_storys():
+        """
+            分享到广场
+        :return:
+        """
+        res = []
+        limit = request.args.get("limit", default=10)
+        storys = FaceStory.query.filter_by(in_square=True).order_by(FaceStory.like).limit(limit)
+        for s in storys:
+            res.append(s.to_dict())
+        return Response(json.dumps(res), mimetype='application/json')
     return app
