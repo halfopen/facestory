@@ -97,7 +97,7 @@ Page({
       console.log("share", res);
       return {
           title: 'face story',
-          path: '/pages/index/index?story='+encodeURIComponent(JSON.stringify(this.data.story)),
+          path: '/pages/selfie_result/selfie_result?story='+encodeURIComponent(JSON.stringify(this.data.story)),
           imageUrl:this.data.head_pic,
           success:function(res){
 

@@ -1,12 +1,14 @@
 // pages/top/top.js
 let config = require("../../config.js");
+
 var update_top_storys = function(_this, is_first){
+    console.log("update")
     wx.request({
         url: config.TOP_STORYS_API,
         success: function(res){
             console.log(res);
             _this.setData({
-                top_storys: res.data
+                top_storys: res.data.reverse()
             });
             if (!is_first){
                 wx.showToast({
@@ -18,7 +20,8 @@ var update_top_storys = function(_this, is_first){
             wx.stopPullDownRefresh();
         }
     })
-}
+};
+
 Page({
 
   /**
@@ -67,6 +70,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
+      console.log("pulldown");
     update_top_storys(this, false);
   },
 

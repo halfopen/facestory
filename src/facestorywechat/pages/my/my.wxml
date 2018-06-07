@@ -7,7 +7,7 @@
     <!-- 我的自拍记录 -->
     <view   class="my-story-container">
         <view class="my-story-title"><text>我的拍照记录</text></view>
-        <view class="my-story-item"  wx:for="{{my_storys}}" story_id = "{{item.id}}">
+        <view class="my-story-item"  wx:for="{{my_storys}}" wx:key="id">
             <!-- 参数需要以data-开头 -->
             <view >
                 <view  class="my-story-item-image"><image data-id='{{index}}' data-story-id="{{item.id}}" bindtap='clickStory'  src="{{item.story_json.image_url}}" /></view>

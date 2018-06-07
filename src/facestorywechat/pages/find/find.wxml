@@ -8,7 +8,7 @@
                 <view class="my-story-item-time" >2018.06.07</view>
             </view>
         </view>
-        <view class="my-story-item"  wx:for="{{shared_storys}}" story_id = "{{item.id}}">
+        <view class="my-story-item"  wx:for="{{shared_storys}}" wx:key="id">
             <!-- 参数需要以data-开头 -->
             <view >
                 <view  class="my-story-item-image">
