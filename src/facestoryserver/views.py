@@ -20,7 +20,7 @@ def create_view(app, db):
 
     photos = UploadSet('photos', IMAGES)
     configure_uploads(app, photos)
-    patch_request_class(app)  # set maximum file size, default is 16MB
+    patch_request_class(app, size=64*1024*1024)  # 设置最大文件大小，　size默认时64*1024*1024
 
     @app.route('/user_info', methods=['GET', 'POST'])
     def user_info():
