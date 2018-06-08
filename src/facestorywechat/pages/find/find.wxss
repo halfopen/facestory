@@ -1,1 +1,6 @@
 /* pages/find/find.wxss */
+@import "../my/my.wxss";
+
+.top-story-item{
+    color: black
+}

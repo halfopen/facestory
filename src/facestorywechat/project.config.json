@@ -13,7 +13,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "2.0.4",
 	"appid": "wx4b425b0c87a891b7",
-	"projectname": "%2Fhome%2Fh%2Fwechat",
+	"projectname": "facestory",
 	"isGameTourist": false,
 	"condition": {
 		"search": {
@@ -45,6 +45,24 @@
 					"id": -1,
 					"name": "share",
 					"pathName": "pages/share/share",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "getuserinfo",
+					"pathName": "pages/getuserinfo/getuserinfo",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "my",
+					"pathName": "pages/my/my",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "top",
+					"pathName": "pages/top/top",
 					"query": ""
 				}
 			]

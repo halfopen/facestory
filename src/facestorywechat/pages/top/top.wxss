@@ -1,0 +1,73 @@
+/* pages/top/top.wxss */
+@import "../my/my.wxss";
+
+.top-cover{
+    min-height: 300rpx;
+    background: black;
+    width: 100%;
+    color: white;
+    text-align: center;
+    position: relative;
+}
+
+.cover-top-text{
+    font-size: small;
+}
+.cover-text{
+    position: absolute;
+    top:50%;
+    margin-top:-20rpx;
+    width:100%;
+    left:0;
+
+}
+
+.my-story-item{
+    float:none;
+    width: 90%;
+    padding: 20rpx;
+    position: relative;
+    margin-top: 40rpx;
+}
+
+.my-story-item-image image{
+    float: left;
+    top:-40rpx;
+    position: relative;
+}
+
+.my-story-item-desc{
+    padding-right: 90rpx;
+}
+
+.top-story-item-index{
+    position:absolute;
+    right:20rpx;
+    top:-15rpx;
+    height:30rpx;
+    line-height:30rpx;
+    padding:32rpx;
+    font-size:26px;
+    color: white;
+    background-size: 100% 100%;
+}
+
+.top-story-userinfo-container{
+    position: relative;
+    height: 80rpx;
+    font-size: small;
+}
+
+.top-story-userinfo-container .image-container{
+    float: left;
+    padding: 10rpx;
+}
+.top-story-userinfo-container .like-container{
+    float: right;
+    padding: 10rpx;
+    margin-right: 80rpx;
+}
+.top-story-userinfo-container image{
+    height: 30rpx;
+    width: 30rpx;
+}

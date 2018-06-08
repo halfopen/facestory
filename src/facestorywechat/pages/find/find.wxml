@@ -1,2 +1,26 @@
 <!--pages/find/find.wxml-->
-<text>pages/find/find.wxml</text>
+<view class='container'>
+    <view class="my-story-container">
+        <view class="my-story-item top-story-item" bindtap='clickTopStory'>
+            <view>
+                <view class="my-story-item-image"><image src="/images/baidu/timg_3.jpeg" /></view>
+                <view class="my-story-item-desc">最佳排名</view>
+                <view class="my-story-item-time" >2018.06.07</view>
+            </view>
+        </view>
+        <view class="my-story-item"  wx:for="{{shared_storys}}" wx:key="id">
+            <!-- 参数需要以data-开头 -->
+            <view >
+                <view  class="my-story-item-image">
+                    <image data-id='{{index}}' data-story-id="{{item.id}}" bindtap='clickStory'  src="{{item.story_json.image_url}}" />
+                </view>
+                <view class="my-story-item-desc">
+                    <text>气虚，肾虚. 起居养生：早睡早起，保证睡眠充足，四季起居有常；适度运动，避免过度体力劳动</text>
+                </view>
+                <view data-id='{{index}}' 
+                    data-story-id="{{item.id}}" 
+                    bindtap='clickStory'  class="my-story-item-time" >{{item.date}}</view>
+            </view>
+        </view>
+    </view>
+</view>

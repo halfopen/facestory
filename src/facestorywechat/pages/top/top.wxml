@@ -1,0 +1,27 @@
+<!--pages/top/top.wxml-->
+<view class='container'>
+    <view class="top-cover"><text class="cover-top-text">－以今日获得赞数作为排名依据－</text><text class="cover-text">最佳</text></view>
+    <view class="my-story-container">
+        <view class="my-story-item" wx:for="{{top_storys}}"  wx:key="id">
+            <!-- 参数需要以data-开头 -->
+            <view >
+                <!-- 自拍图片 -->
+                <view  class="my-story-item-image">
+                    <image data-id='{{index}}' data-story-id="{{item.id}}" bindtap='clickStory'  src="{{item.story_json.image_url}}" />
+                </view>
+                <view class="top-story-userinfo-container">
+                    <view class="image-container"><image src="/images/user_1.png" />{{item.nick_name}}</view>
+                    <view class="like-container"><image src="/images/heart.png" /><text>{{item.like}}</text></view></view>
+                <view class="my-story-item-desc">
+                    <text>气虚，肾虚. 起居养生：早睡早起，保证睡眠充足，四季起居有常；适度运动，避免过度体力劳动</text>
+                </view>
+                <view data-id='{{index}}' 
+                    data-story-id="{{item.id}}" 
+                    bindtap='clickStory'  class="my-story-item-time" >{{item.date}}
+                </view>
+                <text style="background:url(http://localhost:5000/_uploads/photos/shuqian{{index%9}}.png); background-size:100%" class="top-story-item-index">{{index+1}}</text>
+            </view>
+        </view>
+    </view>
+</view>
+
