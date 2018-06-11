@@ -6,7 +6,7 @@ const app = getApp();
 /**
  * 更新我的拍照记录
  */
-var update_storys = function(_this, is_first){
+var update_storys = function (_this, is_first) {
     wx.request({
         url: config.GET_MY_STORYS_API + "?openid=" + app.globalData.openid,
         success: function (res) {
@@ -14,7 +14,7 @@ var update_storys = function(_this, is_first){
             _this.setData({
                 my_storys: res.data.reverse()
             });
-            if(!is_first){
+            if (!is_first) {
                 wx.showToast({
                     title: '更新成功',
                 });
@@ -26,80 +26,105 @@ var update_storys = function(_this, is_first){
 
 Page({
 
-  /**
-   * 页面的初始数据
-   */
-  data: {
-      my_storys:[]
-  },
+    /**
+     * 页面的初始数据
+     */
+    data: {
+        my_storys: []
+    },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-    console.log("onload");
-    var _this = this;
-    update_storys(_this, true);
-  },
+    /**
+     * 生命周期函数--监听页面加载
+     */
+    onLoad: function (options) {
+        console.log("onload");
+        var _this = this;
+        update_storys(_this, true);
+    },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-    console.log("onready")
-  },
+    /**
+     * 生命周期函数--监听页面初次渲染完成
+     */
+    onReady: function () {
+        console.log("onready")
+    },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-    console.log('onshow')
-  },
+    /**
+     * 生命周期函数--监听页面显示
+     */
+    onShow: function () {
+        console.log('onshow')
+    },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-    console.log("onhide")
-  },
+    /**
+     * 生命周期函数--监听页面隐藏
+     */
+    onHide: function () {
+        console.log("onhide")
+    },
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-    console.log("onunload")
-  },
+    /**
+     * 生命周期函数--监听页面卸载
+     */
+    onUnload: function () {
+        console.log("onunload")
+    },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-    update_storys(this, false);
-  },
+    /**
+     * 页面相关事件处理函数--监听用户下拉动作
+     */
+    onPullDownRefresh: function () {
+        update_storys(this, false);
+    },
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
+    /**
+     * 页面上拉触底事件的处理函数
+     */
+    onReachBottom: function () {
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
-  }, 
-  
+    },
 
-  clickStory: function (e) {
-      let id = e.target.dataset.id;
-      console.log(e, e.target.dataset.storyId);
-      let story = this.data.my_storys[id];
-      console.log(this.data.my_storys);
-      wx.navigateTo({
-          url: '/pages/selfie_result/selfie_result?story=' + encodeURIComponent(JSON.stringify(story)),
-      })
-      console.log(this.data.my_storys[id])
-  }
+    /**
+     * 用户点击右上角分享
+     */
+    onShareAppMessage: function () {
+
+    },
+
+
+    clickStory: function (e) {
+        let id = e.currentTarget.dataset.id;
+        console.log(e, e.currentTarget.dataset.storyId, id);
+        let story = this.data.my_storys[id];
+        console.log(this.data.my_storys);
+        wx.navigateTo({
+            url: '/pages/selfie_result/selfie_result?story=' + encodeURIComponent(JSON.stringify(story)),
+        })
+        console.log(this.data.my_storys[id])
+    },
+
+    longpressStory: function (e) {
+        let id = e.currentTarget.dataset.id;
+        let storyid = e.currentTarget.dataset.storyId
+        let _this = this;
+        console.log(e, id, e.currentTarget, this.data.my_storys[id].active);
+        wx.showModal({
+            title: '确认删除',
+            content: '删除',
+            success: function (res) {
+                console.log(res);
+                // 确认删除
+                if (res.confirm) {
+                    wx.request({
+                        url: config.STORY_API + '?id=' + storyid,
+                        method:'DELETE',
+                        success: function (res) {
+                            console.log(res);
+                            update_storys(_this, false);
+                        }
+                    })
+                }
+            }
+        })
+    }
 })

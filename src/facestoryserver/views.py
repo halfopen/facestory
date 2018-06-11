@@ -202,18 +202,26 @@ def create_view(app, db):
             res.append(s.to_dict())
         return Response(json.dumps(res), mimetype='application/json')
 
-    @app.route('/get_story', methods=['GET'])
-    def get_story():
+    @app.route('/story', methods=['GET', 'DELETE'])
+    def story():
         """
             获取某个自拍记录
         :return:
         """
-        res = dict()
-        story_id = request.args.get('id')
-        story = FaceStory.query.filter_by(id=story_id).first()
-        if story is not None:
-            res = story.to_dict()
-        return Response(json.dumps(res), mimetype='application/json')
+        if request.method == 'GET':
+            res = dict()
+            story_id = request.args.get('id')
+            story = FaceStory.query.get(story_id)
+            if story is not None:
+                res = story.to_dict()
+            return Response(json.dumps(res), mimetype='application/json')
+        elif request.method == 'DELETE':
+            story_id = request.args.get('id')
+            story = FaceStory.query.get(story_id)
+            if story is not None:
+                db.session.delete(story)
+                db.session.commit()
+            return Response(json.dumps({"code":0, "message":"删除成功"}), mimetype='application/json')
 
     @app.route('/share_to_square', methods=['GET'])
     def share_to_square():
