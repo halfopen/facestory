@@ -13,8 +13,9 @@ from constant import UPLOAD_DIR, GET_APP_ID_URL
 from face_reading_svm import apply
 from json_objs import Node, Result
 from db import db
-from models import FaceStory, UserInfo
+from models import FaceStory, UserInfo, Log
 import emotion_gender_processor as eg_processor
+import flask_restless
 import cv2
 import json
 import requests
@@ -22,10 +23,15 @@ import logging
 
 
 def create_view(app, db):
-
+    manager = flask_restless.APIManager(app, flask_sqlalchemy_db=db)
     photos = UploadSet('photos', IMAGES)
     configure_uploads(app, photos)
     patch_request_class(app, size=64*1024*1024)  # 设置最大文件大小，　size默认时64*1024*1024
+
+    # 添加restful api , 请求方法　http://flask-restless.readthedocs.io/en/latest/fetching.html
+    manager.create_api(Log, methods=['GET', 'POST', 'DELETE'])
+    manager.create_api(FaceStory, methods=['GET', 'POST', 'DELETE'])
+    manager.create_api(UserInfo, methods=['GET', 'POST', 'DELETE'])
 
     @app.route('/user_info', methods=['GET', 'POST'])
     def user_info():

@@ -20,9 +20,9 @@ import tensorflow as tf
 g = tf.Graph()
 
 with g.as_default():
-    face_detection = load_detection_model(detection_model_path)
-    emotion_classifier = load_model(emotion_model_path, compile=False)
-    gender_classifier = load_model(gender_model_path, compile=False)
+    face_detection = load_detection_model(DETECTION_MODEL_PATH)
+    emotion_classifier = load_model(EMOTION_MODEL_PATH, compile=False)
+    gender_classifier = load_model(GENDER_MODEL_PATH, compile=False)
 
 print("read face reading model end")
 
