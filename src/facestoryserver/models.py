@@ -1,4 +1,9 @@
 # coding: utf-8
+"""
+    数据库定义
+
+"""
+
 
 from db import db
 from datetime import datetime
@@ -6,9 +11,13 @@ import json
 
 
 class User(db.Model):
+    """
+        用户后台管理登录
+        默认用户　cisl cis-51355517
+    """
     id = db.Column(db.Integer, primary_key = True)
     login = db.Column(db.String(40), unique=True)
-    passwd = db.Column(db.String(40))  # password need to be hashed before installed
+    passwd = db.Column(db.String(40))
 
     def is_authenticated(self):
         return True
@@ -108,3 +117,19 @@ class UserInfo(db.Model):
 
     def __repr__(self):
         return "<UserInfo "+self.nick_name+" "+self.openid+" >"
+
+
+class Log(db.Model):
+    """
+        用户操作日志
+    """
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    # 用户
+
+    # 操作类型
+
+    # 操作内容
+
+    # 操作时间
+
+    # 备注

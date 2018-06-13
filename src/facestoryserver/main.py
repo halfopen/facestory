@@ -7,7 +7,7 @@ from admin import add_admin
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'I have a dream'
-app.config['UPLOADED_PHOTOS_DEST'] = UPLOAD_DIR  # 文件上传路径
+app.config['UPLOADED_PHOTOS_DEST'] = UPLOAD_DIR
 app.config['SQLALCHEMY_DATABASE_URI'] = DATA_BASE_URI
 
 with app.app_context():

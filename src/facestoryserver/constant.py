@@ -20,5 +20,5 @@ analysis_json_path = BASE_DIR + '/trained_models/face_reading/analysis.json'
 APP_ID = 'wx4b425b0c87a891b7'
 # 微信小程序secret
 SECRET = '83e750ced5f0ead5ca0c2a6bbd0051cd'
-# openid接口
+# openid接口, 用于给小程序获取用户openid
 GET_APP_ID_URL = 'https://api.weixin.qq.com/sns/jscode2session?appid=' + APP_ID + '&secret=' + SECRET + '&grant_type=authorization_code&js_code='

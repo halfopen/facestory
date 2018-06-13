@@ -1,4 +1,9 @@
 # coding: utf-8
+
+"""
+    接口
+"""
+
 from flask import request, render_template, Response
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileRequired, FileAllowed

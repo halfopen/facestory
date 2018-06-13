@@ -1,4 +1,10 @@
 # coding:utf-8
+
+"""
+    系统管理
+
+"""
+
 from flask import redirect, url_for, request
 from wtforms import form, fields, validators
 from flask_admin import helpers, AdminIndexView, expose, Admin
