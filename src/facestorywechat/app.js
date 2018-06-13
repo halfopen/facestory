@@ -40,6 +40,14 @@ App({
                 console.log("globaldata",_this.globalData)
                 // 上传用户信息
                 upload_user_info(_this);
+            },
+            fail:function(res){
+                console.log(res.errMsg)
+                wx.showModal({
+                    title: '请求错误',
+                    content: res.errMsg,
+                    showCancel:false
+                })
             }
         })  
       }

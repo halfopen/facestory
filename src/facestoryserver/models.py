@@ -5,6 +5,21 @@ from datetime import datetime
 import json
 
 
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key = True)
+    login = db.Column(db.String(40), unique=True)
+    passwd = db.Column(db.String(40))  # password need to be hashed before installed
+
+    def is_authenticated(self):
+        return True
+
+    def is_active(self):
+        return True
+
+    def get_id(self):
+        return self.id
+
+
 class FaceStory(db.Model):
     """
         一个自拍记录

@@ -10,7 +10,8 @@ var update_storys = function (_this, is_first) {
     wx.request({
         url: config.GET_SQUARE_STORYS_API,
         success: function (res) {
-            console.log(res.data);
+            console.log(res);
+            if(res.statusCode==200){
             _this.setData({
                 shared_storys: res.data
             });
@@ -19,6 +20,7 @@ var update_storys = function (_this, is_first) {
                     title: '更新成功',
                 });
                 wx.stopPullDownRefresh();
+            }
             }
         }
     });
