@@ -1,6 +1,6 @@
 // pages/my/my.js
 let config = require("../../config.js");
-let utils = require("../../utils/util.js");
+let util = require("../../utils/util.js");
 const app = getApp();
 
 /**
@@ -56,6 +56,7 @@ Page({
    */
   onShow: function () {
     console.log('onshow')
+    util.logger.log("进入我的")
   },
 
   /**
@@ -63,6 +64,7 @@ Page({
    */
   onHide: function () {
     console.log("onhide")
+    util.logger.log("离开我的")
   },
 
   /**

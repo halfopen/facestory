@@ -1,5 +1,6 @@
 // pages/find/find.js
 let config = require("../../config.js");
+let util = require("../../utils/util.js");
 const app = getApp();
 
 
@@ -53,14 +54,14 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    util.logger.log("进入广场");
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-  
+    util.logger.log("离开广场");
   },
 
   /**

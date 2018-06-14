@@ -134,8 +134,6 @@ class Log(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     # 微信的用户openid
     openid = db.Column(db.VARCHAR(256))
-    # 昵称
-    nick_name = db.Column(db.VARCHAR(256), nullable=False)
     # 操作类型
     op_type = db.Column(db.Integer(), default=0)
     # 操作内容

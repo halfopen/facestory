@@ -95,7 +95,7 @@ def add_admin(app):
         pass
 
     class LogView(MyBaseModelView):
-        pass
+        column_default_sort = ('op_time', True)
 
     Babel(app)
     app.config['BABEL_DEFAULT_LOCALE'] = 'zh_CN'

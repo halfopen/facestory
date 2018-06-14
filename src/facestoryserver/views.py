@@ -100,6 +100,9 @@ def create_view(app, db):
         # 获取原始图片
         unchanged_image = cv2.imread(UPLOAD_DIR + "/" + filename)
 
+        if unchanged_image is None:
+            abort(500, "不支持的图片")
+
         # 获取情绪，性别信息
         face_size, gender, emotion = eg_processor.process_image(unchanged_image)
 
@@ -107,6 +110,8 @@ def create_view(app, db):
         # 面部特征结果
         face_detail = list()
         face_detail_dict = apply(unchanged_image)
+        if face_detail_dict is None:
+            abort(500, "没有找到人脸")
         print(face_detail_dict.keys())
         for k in face_detail_dict.keys():
             face_detail.append(Node(
@@ -270,4 +275,14 @@ def create_view(app, db):
         for s in storys:
             res.append(s.to_dict())
         return Response(json.dumps(res), mimetype='application/json')
+
+    @app.errorhandler(500)
+    def error500(error):
+        """
+            自定义错误用　abort(500, msg)　处理
+        :param error:
+        :return:
+        """
+        print(error)
+        return Response(json.dumps({"code":-1, "message":str(error)}), mimetype="application/json")
     return app

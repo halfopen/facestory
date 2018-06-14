@@ -1,5 +1,6 @@
 //app.js
 let config = require('./config.js');
+let util = require("./utils/util.js");
 
 var upload_user_info = function(app){
     var user_info_data = app.globalData.userInfo;
@@ -21,6 +22,7 @@ var upload_user_info = function(app){
 
 App({
   onLaunch: function () {
+      util.logger.log("进入小程序");
     var _this = this;
     // 登录
     wx.login({
@@ -37,6 +39,10 @@ App({
             success: function (res) {
                 console.log(res) //获取openid  
                 _this.globalData.openid = res.data.openid
+                wx.setStorage({
+                    key: 'openid',
+                    data: res.data.openid,
+                })
                 console.log("globaldata",_this.globalData)
                 // 上传用户信息
                 upload_user_info(_this);
@@ -64,6 +70,11 @@ App({
                 console.log("userinfo",res);
               // 可以将 res 发送给后台解码出 unionId
               this.globalData.userInfo = res.userInfo
+
+              wx.setStorage({
+                  key: 'userinfo',
+                  data: JSON.stringify(res.userInfo),
+              });
               // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
               // 所以此处加入 callback 以防止这种情况
               if (this.userInfoReadyCallback) {
@@ -79,6 +90,15 @@ App({
         }
       }
     })
+  },
+  onShow:function(){
+      util.logger.log("show app");
+  },
+  onError: function(msg){
+      util.logger.error(msg);
+  },
+  onHide:function(){
+      util.logger.log("hide app");
   },
   globalData: {
     userInfo: null,

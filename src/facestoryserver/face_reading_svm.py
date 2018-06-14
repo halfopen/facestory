@@ -121,8 +121,9 @@ def getNormalizedFeatures(img, display=False):
     rects = detector(gray, 0)
 
     if len(rects) == 0:  # no face was detected
-        sys.exit("No face is detected")
-        return None
+        # sys.exit("No face is detected")
+        # return None
+        return None, None
     else:
         faceImg = fa.align(img, gray, rects[0])
         full_rect = dlib.rectangle(0, 0, faceImg.shape[1], faceImg.shape[0])
@@ -142,7 +143,10 @@ def getNormalizedFeatures(img, display=False):
 
 
 def apply(img):
+    print(img)
     faceImg, data = getNormalizedFeatures(img, False)
+    if faceImg is None:
+        return None
     result = dict()
 
     for region_name, points in data.items():
