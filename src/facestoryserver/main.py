@@ -11,9 +11,10 @@ app.config['SECRET_KEY'] = 'I have a dream'
 app.config['UPLOADED_PHOTOS_DEST'] = UPLOAD_DIR
 app.config['SQLALCHEMY_DATABASE_URI'] = DATA_BASE_URI
 
-with app.app_context():
-    db.init_app(app)
-    db.create_all()
+
+db.init_app(app)
+db.app = app
+db.create_all()
 
 app = create_view(app, db)
 app = add_admin(app)
