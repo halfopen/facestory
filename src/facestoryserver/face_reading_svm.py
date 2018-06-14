@@ -46,7 +46,7 @@ faceRegions["eyes"] = faceRegions["eye_left"] + faceRegions["eye_right"]
 faceRegions["eyebrows"] = faceRegions["eyebrow_left"] + faceRegions["eyebrow_right"]
 
 
-with open(ANALYSIS_JSON_PATH) as f:
+with open(ANALYSIS_JSON_PATH, "r", encoding="utf-8") as f:
     analysis = json.load(f)
 
 svms = joblib.load(SVM_MODEL_PATH)
