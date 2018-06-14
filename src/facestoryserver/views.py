@@ -13,8 +13,9 @@ from constant import UPLOAD_DIR, GET_APP_ID_URL
 from face_reading_svm import apply
 from json_objs import Node, Result
 from db import db
-from models import FaceStory, UserInfo
+from models import FaceStory, UserInfo, Log
 import emotion_gender_processor as eg_processor
+import flask_restless
 import cv2
 import json
 import requests
@@ -22,10 +23,15 @@ import logging
 
 
 def create_view(app, db):
-
+    manager = flask_restless.APIManager(app, flask_sqlalchemy_db=db)
     photos = UploadSet('photos', IMAGES)
     configure_uploads(app, photos)
     patch_request_class(app, size=64*1024*1024)  # 设置最大文件大小，　size默认时64*1024*1024
+
+    # 添加restful api , 请求方法　http://flask-restless.readthedocs.io/en/latest/fetching.html
+    manager.create_api(Log, methods=['GET', 'POST', 'DELETE'])
+    manager.create_api(FaceStory, methods=['GET', 'POST', 'DELETE'])
+    manager.create_api(UserInfo, methods=['GET', 'POST', 'DELETE'])
 
     @app.route('/user_info', methods=['GET', 'POST'])
     def user_info():
@@ -94,6 +100,9 @@ def create_view(app, db):
         # 获取原始图片
         unchanged_image = cv2.imread(UPLOAD_DIR + "/" + filename)
 
+        if unchanged_image is None:
+            abort(500, "不支持的图片")
+
         # 获取情绪，性别信息
         face_size, gender, emotion = eg_processor.process_image(unchanged_image)
 
@@ -101,6 +110,8 @@ def create_view(app, db):
         # 面部特征结果
         face_detail = list()
         face_detail_dict = apply(unchanged_image)
+        if face_detail_dict is None:
+            abort(500, "没有找到人脸")
         print(face_detail_dict.keys())
         for k in face_detail_dict.keys():
             face_detail.append(Node(
@@ -264,4 +275,14 @@ def create_view(app, db):
         for s in storys:
             res.append(s.to_dict())
         return Response(json.dumps(res), mimetype='application/json')
+
+    @app.errorhandler(500)
+    def error500(error):
+        """
+            自定义错误用　abort(500, msg)　处理
+        :param error:
+        :return:
+        """
+        print(error)
+        return Response(json.dumps({"code":-1, "message":str(error)}), mimetype="application/json")
     return app

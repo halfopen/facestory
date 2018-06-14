@@ -1,6 +1,7 @@
 // pages/selfie_result/selfie_result.js
 let app = getApp();
 let config = require("../../config.js");
+let util = require("../../utils/util.js");
 var is_my_story = false;
 Page({
 
@@ -59,21 +60,23 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    util.logger.log("进入拍照结果")
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-  
+      util.logger.log("离开拍照结果");
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-  
+    console.log("onUnload selfieresult");
+    // 拍照结果一般是点左上角返回按钮
+    util.logger.log("离开拍照结果");
   },
 
   /**
