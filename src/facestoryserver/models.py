@@ -16,10 +16,14 @@ class User(db.Model):
         默认用户　cisl cis-51355517
         pbkdf2:sha256:50000$AS9cAm2D$838abef9e7fbdf2c082a0657588bc0e639c48223f735c060888ade5d05057409
     """
-    __tablename__= 'users'
-    id = db.Column(db.Integer, primary_key=True)
+    __tablename__= 'user'
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     login = db.Column(db.String(40), unique=True)
     passwd = db.Column(db.String(40))
+
+    def __init__(self, login, passwd):
+        self.login = login
+        self.passwd = passwd
 
     # flask-login要求实现以下三个方法
     def is_authenticated(self):
@@ -32,8 +36,13 @@ class User(db.Model):
         return self.id
 
 
+face_story_likes = db.Table('face_story_likes', db.Model.metadata,
+                            db.Column('face_story_id', db.Integer, db.ForeignKey('face_story.id')),
+                            db.Column('user_info_id', db.Integer, db.ForeignKey('user_info.id')))
+
+
 class UserInfo(db.Model):
-    __tablename__ = 'user_infos'
+    __tablename__ = 'user_info'
     """
         存储用户信息，根据微信字段　
         "{"nickName":"我不是大哥","gender":1,"language":"zh_CN","city":"Xinzhou","province":"Shanxi","country":"China","avatarUrl":"https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eokAGkics0CTDoLhUsukAmy4sTvb167M3kBKyGfYmBv0tj5InBiahpqhgXBaWic1Bz3OYXC2oYHCzNvg/132"}"
@@ -83,7 +92,7 @@ class FaceStory(db.Model):
     """
         一个自拍记录
     """
-    __tablename__ = 'face_factorys'
+    __tablename__ = 'face_story'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     # 微信的用户openid
     openid = db.Column(db.VARCHAR(256))
@@ -97,7 +106,7 @@ class FaceStory(db.Model):
     # 自拍结果
     story_json = db.Column(db.TEXT)
     # 点赞
-    like = db.Column(db.Integer, default=0)
+    likes = db.relationship('UserInfo', secondary=face_story_likes)
     # 是否分享到广场
     in_square = db.Column(db.Boolean, default=False)
 
@@ -109,7 +118,7 @@ class FaceStory(db.Model):
         d['openid'] = self.openid
         d['story_json'] = json.loads(self.story_json)
         d['date'] = self.date.strftime("%Y-%m-%d %H:%M:%S")
-        d['like'] = self.like
+        d['like'] = [u.to_dict() for u in self.likes]
         d['in_square'] = self.in_square
         return d
 
@@ -130,7 +139,7 @@ class Log(db.Model):
     """
         用户操作日志
     """
-    __tablename__ = 'logs'
+    __tablename__ = 'log'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     # 微信的用户openid
     openid = db.Column(db.VARCHAR(256))

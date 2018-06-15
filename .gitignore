@@ -7,3 +7,4 @@
 src/facestoryserver/venv/
 src/facestoryserver/__pycache__/
 src/facestoryserver/.idea/
+src/facestoryserver/static/

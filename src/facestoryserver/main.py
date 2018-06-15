@@ -19,6 +19,11 @@ db.create_all()
 app = create_view(app, db)
 app = add_admin(app)
 
+if User.query.first() is None:
+    user = User("cisl", "pbkdf2:sha256:50000$AS9cAm2D$838abef9e7fbdf2c082a0657588bc0e639c48223f735c060888ade5d05057409")
+    db.session.add(user)
+    db.session.commit()
+
 if __name__ == '__main__':
 
     app.run(host='0.0.0.0')

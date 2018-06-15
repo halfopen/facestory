@@ -33,7 +33,7 @@ var sendLog = function(opContent, opType){
                 method:"POST",
                 data:{
                     "data":{
-                        "type":"logs",
+                        "type":"log",
                         "attributes":{
                             "openid":openid,
                             "op_content":opContent,

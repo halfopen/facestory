@@ -3,16 +3,67 @@
   <component name="ChangeListManager">
     <list default="true" id="e4cd371f-bef3-46ad-80ab-c2b3b0568a3f" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/admin.py" afterPath="$PROJECT_DIR$/admin.py" />
-      <change beforePath="$PROJECT_DIR$/face_reading_svm.py" afterPath="$PROJECT_DIR$/face_reading_svm.py" />
-      <change beforePath="$PROJECT_DIR$/facestory.db" afterPath="$PROJECT_DIR$/facestory.db" />
+      <change beforePath="$PROJECT_DIR$/facestory.db" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/main.py" afterPath="$PROJECT_DIR$/main.py" />
       <change beforePath="$PROJECT_DIR$/models.py" afterPath="$PROJECT_DIR$/models.py" />
-      <change beforePath="$PROJECT_DIR$/views.py" afterPath="$PROJECT_DIR$/views.py" />
-      <change beforePath="$PROJECT_DIR$/../facestorywechat/app.js" afterPath="$PROJECT_DIR$/../facestorywechat/app.js" />
-      <change beforePath="$PROJECT_DIR$/../facestorywechat/config.js" afterPath="$PROJECT_DIR$/../facestorywechat/config.js" />
-      <change beforePath="$PROJECT_DIR$/../facestorywechat/pages/index/index.js" afterPath="$PROJECT_DIR$/../facestorywechat/pages/index/index.js" />
-      <change beforePath="$PROJECT_DIR$/../facestorywechat/project.config.json" afterPath="$PROJECT_DIR$/../facestorywechat/project.config.json" />
-      <change beforePath="$PROJECT_DIR$/../facestorywechat/utils/util.js" afterPath="$PROJECT_DIR$/../facestorywechat/utils/util.js" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/shuqian0.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/shuqian1.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/shuqian2.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/shuqian3.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/shuqian4.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/shuqian5.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/shuqian6.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/shuqian7.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/shuqian8.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/shuqian9.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/wx4b425b0c87a891b7.o6zAJs140c3-kZZsQBs5jFGe3UJE.01Ir2d5B15fT0777a1f11385fd1b54191a239f201a85.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/wx4b425b0c87a891b7.o6zAJs140c3-kZZsQBs5jFGe3UJE.0h9dKXyrn6eB0777a1f11385fd1b54191a239f201a85.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/wx4b425b0c87a891b7.o6zAJs140c3-kZZsQBs5jFGe3UJE.1TYcbjZSwiKC0777a1f11385fd1b54191a239f201a85.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/wx4b425b0c87a891b7.o6zAJs140c3-kZZsQBs5jFGe3UJE.2XIn3IJ7dwXb7e4b24312a801d144d6b3d630c53a2a9.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/wx4b425b0c87a891b7.o6zAJs140c3-kZZsQBs5jFGe3UJE.2i3vAPY8PQ0u0777a1f11385fd1b54191a239f201a85.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/wx4b425b0c87a891b7.o6zAJs140c3-kZZsQBs5jFGe3UJE.39A4xwYjGeZK17e4d0e55b3fb301cd24ba1d9d66ed43.jpeg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/wx4b425b0c87a891b7.o6zAJs140c3-kZZsQBs5jFGe3UJE.5d14q1ldf7xWbbfffeb5a812391591aef5c2f9319cf4.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/wx4b425b0c87a891b7.o6zAJs140c3-kZZsQBs5jFGe3UJE.85gD2WydIO0zff1e2b9f2b104fb65c8c7b1eb8bca175.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/wx4b425b0c87a891b7.o6zAJs140c3-kZZsQBs5jFGe3UJE.AkX09WaXO1Hobbfffeb5a812391591aef5c2f9319cf4.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/wx4b425b0c87a891b7.o6zAJs140c3-kZZsQBs5jFGe3UJE.COqVSV4fe3vVa90a5a84cef4afdde0d1d968966e905b.gif" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/wx4b425b0c87a891b7.o6zAJs140c3-kZZsQBs5jFGe3UJE.CSPFLfRI3Neqbc3a4a321d2b2e08763306970fee3da4.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/wx4b425b0c87a891b7.o6zAJs140c3-kZZsQBs5jFGe3UJE.DbYqk9jXn6ivff1e2b9f2b104fb65c8c7b1eb8bca175.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/wx4b425b0c87a891b7.o6zAJs140c3-kZZsQBs5jFGe3UJE.FArQmRiS4Qk476bc839857e9ac1846273910edf782ff.jpeg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/wx4b425b0c87a891b7.o6zAJs140c3-kZZsQBs5jFGe3UJE.H4TXRTEfhvxO4995e4c3a01d8f2fd25065bd16ba8042.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/wx4b425b0c87a891b7.o6zAJs140c3-kZZsQBs5jFGe3UJE.IPXN98lrJZQr0777a1f11385fd1b54191a239f201a85.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/wx4b425b0c87a891b7.o6zAJs140c3-kZZsQBs5jFGe3UJE.IQUXAqmnExTTbbfffeb5a812391591aef5c2f9319cf4.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/wx4b425b0c87a891b7.o6zAJs140c3-kZZsQBs5jFGe3UJE.ItbAEfnOd3xbceb30ba12cd1811553a458df1eb53a21.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/wx4b425b0c87a891b7.o6zAJs140c3-kZZsQBs5jFGe3UJE.J31e58uevBTIa90a5a84cef4afdde0d1d968966e905b.gif" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/wx4b425b0c87a891b7.o6zAJs140c3-kZZsQBs5jFGe3UJE.KSkHkGiDGu83ff1e2b9f2b104fb65c8c7b1eb8bca175.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/wx4b425b0c87a891b7.o6zAJs140c3-kZZsQBs5jFGe3UJE.Llv3YXumMxmhff1e2b9f2b104fb65c8c7b1eb8bca175.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/wx4b425b0c87a891b7.o6zAJs140c3-kZZsQBs5jFGe3UJE.Lx0pfzHqmDrP0777a1f11385fd1b54191a239f201a85.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/wx4b425b0c87a891b7.o6zAJs140c3-kZZsQBs5jFGe3UJE.NdzhhJr6FsaQ17e4d0e55b3fb301cd24ba1d9d66ed43.jpeg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/wx4b425b0c87a891b7.o6zAJs140c3-kZZsQBs5jFGe3UJE.QZt57JSou1di4995e4c3a01d8f2fd25065bd16ba8042.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/wx4b425b0c87a891b7.o6zAJs140c3-kZZsQBs5jFGe3UJE.S3bcEnegxL0g0777a1f11385fd1b54191a239f201a85.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/wx4b425b0c87a891b7.o6zAJs140c3-kZZsQBs5jFGe3UJE.SRJ3C8jOFFBua90a5a84cef4afdde0d1d968966e905b.gif" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/wx4b425b0c87a891b7.o6zAJs140c3-kZZsQBs5jFGe3UJE.VKhEeYkUD4uGceb30ba12cd1811553a458df1eb53a21.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/wx4b425b0c87a891b7.o6zAJs140c3-kZZsQBs5jFGe3UJE.VrIw0GHsHIDy7e4b24312a801d144d6b3d630c53a2a9.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/wx4b425b0c87a891b7.o6zAJs140c3-kZZsQBs5jFGe3UJE.a9JExnir53HM0777a1f11385fd1b54191a239f201a85.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/wx4b425b0c87a891b7.o6zAJs140c3-kZZsQBs5jFGe3UJE.acylOhlMwWtT0777a1f11385fd1b54191a239f201a85.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/wx4b425b0c87a891b7.o6zAJs140c3-kZZsQBs5jFGe3UJE.bMjBQk8CJTZAa90a5a84cef4afdde0d1d968966e905b.gif" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/wx4b425b0c87a891b7.o6zAJs140c3-kZZsQBs5jFGe3UJE.bdNP6UPA0Oamceb30ba12cd1811553a458df1eb53a21.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/wx4b425b0c87a891b7.o6zAJs140c3-kZZsQBs5jFGe3UJE.bhfhkq74j2DR0777a1f11385fd1b54191a239f201a85.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/wx4b425b0c87a891b7.o6zAJs140c3-kZZsQBs5jFGe3UJE.bu7Jine5PJrOa90a5a84cef4afdde0d1d968966e905b.gif" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/wx4b425b0c87a891b7.o6zAJs140c3-kZZsQBs5jFGe3UJE.efhSOZc4WeHq17e4d0e55b3fb301cd24ba1d9d66ed43.jpeg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/wx4b425b0c87a891b7.o6zAJs140c3-kZZsQBs5jFGe3UJE.hZ01Yzojxr6Cff1e2b9f2b104fb65c8c7b1eb8bca175.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/wx4b425b0c87a891b7.o6zAJs140c3-kZZsQBs5jFGe3UJE.i82rlSnfDbCZa90a5a84cef4afdde0d1d968966e905b.gif" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/wx4b425b0c87a891b7.o6zAJs140c3-kZZsQBs5jFGe3UJE.ijEzViA7Yb2Aff1e2b9f2b104fb65c8c7b1eb8bca175.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/wx4b425b0c87a891b7.o6zAJs140c3-kZZsQBs5jFGe3UJE.jIq3bzxTXctva90a5a84cef4afdde0d1d968966e905b.gif" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/wx4b425b0c87a891b7.o6zAJs140c3-kZZsQBs5jFGe3UJE.jRoWPoL5syvebc3a4a321d2b2e08763306970fee3da4.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/wx4b425b0c87a891b7.o6zAJs140c3-kZZsQBs5jFGe3UJE.juwGNUzS1SNdff1e2b9f2b104fb65c8c7b1eb8bca175.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/wx4b425b0c87a891b7.o6zAJs140c3-kZZsQBs5jFGe3UJE.kA9TKOs4phcs8e1721fe180a03d09ab2bdd74617b376.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/wx4b425b0c87a891b7.o6zAJs140c3-kZZsQBs5jFGe3UJE.mAdHHgcFcszTe3402fd96e4ee4bfa7743242d6c32af5.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/wx4b425b0c87a891b7.o6zAJs140c3-kZZsQBs5jFGe3UJE.oLa6iYMQs1Kkbbfffeb5a812391591aef5c2f9319cf4.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/wx4b425b0c87a891b7.o6zAJs140c3-kZZsQBs5jFGe3UJE.tYmZO4YxN3zC7e4b24312a801d144d6b3d630c53a2a9.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/wx4b425b0c87a891b7.o6zAJs140c3-kZZsQBs5jFGe3UJE.uhMaMikuAMYLbbfffeb5a812391591aef5c2f9319cf4.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/wx4b425b0c87a891b7.o6zAJs140c3-kZZsQBs5jFGe3UJE.vXf7gOKBHikoceb30ba12cd1811553a458df1eb53a21.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/wx4b425b0c87a891b7.o6zAJs140c3-kZZsQBs5jFGe3UJE.vv9WWHESGu4Da90a5a84cef4afdde0d1d968966e905b.gif" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/static/uploads/wx4b425b0c87a891b7.o6zAJs140c3-kZZsQBs5jFGe3UJE.x0ynO9SHhIQja90a5a84cef4afdde0d1d968966e905b.gif" afterPath="" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -22,7 +73,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/facestoryserver$facestoryserver.coverage" NAME="facestoryserver Coverage Results" MODIFIED="1528982824063" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/facestoryserver$facestoryserver.coverage" NAME="facestoryserver Coverage Results" MODIFIED="1529043885534" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/facestoryserver$face_reading_svm.coverage" NAME="face_reading_svm Coverage Results" MODIFIED="1527764990923" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="DatabaseView">
@@ -70,8 +121,8 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+            <state relative-caret-position="315">
+              <caret line="21" column="30" lean-forward="true" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
               <folding>
                 <element signature="e#16#39#0" expanded="true" />
               </folding>
@@ -79,35 +130,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="550">
-              <caret line="141" column="11" lean-forward="false" selection-start-line="141" selection-start-column="4" selection-end-line="141" selection-end-column="11" />
+            <state relative-caret-position="465">
+              <caret line="120" column="32" lean-forward="false" selection-start-line="120" selection-start-column="32" selection-end-line="120" selection-end-column="32" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="wx4b425b0c87a891b7.o6zAJs140c3-kZZsQBs5jFGe3UJE.vXf7gOKBHikoceb30ba12cd1811553a458df1eb53a21.jpg" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/uploads/wx4b425b0c87a891b7.o6zAJs140c3-kZZsQBs5jFGe3UJE.vXf7gOKBHikoceb30ba12cd1811553a458df1eb53a21.jpg">
-          <provider selected="true" editor-type-id="images">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="wx4b425b0c87a891b7.o6zAJs140c3-kZZsQBs5jFGe3UJE.jIq3bzxTXctva90a5a84cef4afdde0d1d968966e905b.gif" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/uploads/wx4b425b0c87a891b7.o6zAJs140c3-kZZsQBs5jFGe3UJE.jIq3bzxTXctva90a5a84cef4afdde0d1d968966e905b.gif">
-          <provider selected="true" editor-type-id="images">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="393">
-              <caret line="281" column="35" lean-forward="false" selection-start-line="281" selection-start-column="35" selection-end-line="281" selection-end-column="35" />
+            <state relative-caret-position="270">
+              <caret line="33" column="67" lean-forward="true" selection-start-line="33" selection-start-column="67" selection-end-line="33" selection-end-column="67" />
               <folding>
                 <element signature="e#33#85#0" expanded="true" />
                 <element signature="e#7017#7370#0" expanded="false" />
@@ -124,7 +161,7 @@
       <file leaf-file-name="app.py" pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/PycharmProjects/facestoryserver/venv/lib/python3.5/site-packages/flask/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-543">
+            <state relative-caret-position="16350">
               <caret line="1115" column="44" lean-forward="false" selection-start-line="1115" selection-start-column="27" selection-end-line="1115" selection-end-column="44" />
               <folding />
             </state>
@@ -144,8 +181,8 @@
       <file leaf-file-name="face_reading_svm.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/face_reading_svm.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="245">
-              <caret line="125" column="25" lean-forward="false" selection-start-line="125" selection-start-column="8" selection-end-line="125" selection-end-column="25" />
+            <state relative-caret-position="360">
+              <caret line="48" column="50" lean-forward="false" selection-start-line="48" selection-start-column="50" selection-end-line="48" selection-end-column="50" />
               <folding />
             </state>
           </provider>
@@ -164,8 +201,8 @@
       <file leaf-file-name="admin.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/admin.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="392">
-              <caret line="97" column="46" lean-forward="false" selection-start-line="97" selection-start-column="46" selection-end-line="97" selection-end-column="46" />
+            <state relative-caret-position="-493">
+              <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="42" selection-end-column="68" />
               <folding>
                 <element signature="e#35#79#0" expanded="true" />
               </folding>
@@ -237,13 +274,13 @@
         <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/templates/admin/my_master.html" />
         <option value="$PROJECT_DIR$/templates/admin/index.html" />
-        <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/constant.py" />
         <option value="$PROJECT_DIR$/emotion_gender_processor.py" />
-        <option value="$PROJECT_DIR$/models.py" />
-        <option value="$PROJECT_DIR$/admin.py" />
-        <option value="$PROJECT_DIR$/face_reading_svm.py" />
         <option value="$PROJECT_DIR$/views.py" />
+        <option value="$PROJECT_DIR$/face_reading_svm.py" />
+        <option value="$PROJECT_DIR$/admin.py" />
+        <option value="$PROJECT_DIR$/main.py" />
+        <option value="$PROJECT_DIR$/models.py" />
       </list>
     </option>
   </component>
@@ -294,6 +331,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -322,7 +360,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -419,19 +456,33 @@
       <option name="presentableId" value="Default" />
       <updated>1527747702729</updated>
     </task>
+    <task id="LOCAL-00001" summary="读取json文件编码问题">
+      <created>1528985863773</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1528985863773</updated>
+    </task>
+    <task id="LOCAL-00002" summary="修改db初始化方式">
+      <created>1528986510650</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1528986510650</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="1987" y="95" width="1922" height="1081" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4171908" sideWeight="0.55531913" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4171908" sideWeight="0.3281915" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4171908" sideWeight="0.44468084" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3249476" sideWeight="0.43617022" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.44893616" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4171908" sideWeight="0.6718085" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2274633" sideWeight="0.42765957" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16382979" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32978722" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32978722" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -479,6 +530,9 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/../.." />
     </ignored-roots>
+    <MESSAGE value="读取json文件编码问题" />
+    <MESSAGE value="修改db初始化方式" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改db初始化方式" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -659,7 +713,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
           <caret line="49" column="12" lean-forward="false" selection-start-line="49" selection-start-column="12" selection-end-line="49" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -681,7 +734,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17715">
           <caret line="1195" column="25" lean-forward="false" selection-start-line="1195" selection-start-column="25" selection-end-line="1195" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -697,7 +749,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="24" column="52" lean-forward="false" selection-start-line="24" selection-start-column="35" selection-end-line="24" selection-end-column="52" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -717,47 +768,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/uploads/wx4b425b0c87a891b7.o6zAJs140c3-kZZsQBs5jFGe3UJE.vXf7gOKBHikoceb30ba12cd1811553a458df1eb53a21.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/uploads/wx4b425b0c87a891b7.o6zAJs140c3-kZZsQBs5jFGe3UJE.jIq3bzxTXctva90a5a84cef4afdde0d1d968966e905b.gif">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="550">
-          <caret line="141" column="11" lean-forward="false" selection-start-line="141" selection-start-column="4" selection-end-line="141" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="392">
-          <caret line="97" column="46" lean-forward="false" selection-start-line="97" selection-start-column="46" selection-end-line="97" selection-end-column="46" />
-          <folding>
-            <element signature="e#35#79#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding>
-            <element signature="e#16#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/static/uploads/wx4b425b0c87a891b7.o6zAJs140c3-kZZsQBs5jFGe3UJE.vXf7gOKBHikoceb30ba12cd1811553a458df1eb53a21.jpg" />
+    <entry file="file://$PROJECT_DIR$/static/uploads/wx4b425b0c87a891b7.o6zAJs140c3-kZZsQBs5jFGe3UJE.jIq3bzxTXctva90a5a84cef4afdde0d1d968966e905b.gif" />
     <entry file="file://$USER_HOME$/PycharmProjects/facestoryserver/venv/lib/python3.5/site-packages/flask/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-543">
+        <state relative-caret-position="16350">
           <caret line="1115" column="44" lean-forward="false" selection-start-line="1115" selection-start-column="27" selection-end-line="1115" selection-end-column="44" />
           <folding />
         </state>
@@ -765,16 +780,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/face_reading_svm.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="125" column="25" lean-forward="false" selection-start-line="125" selection-start-column="8" selection-end-line="125" selection-end-column="25" />
+        <state relative-caret-position="360">
+          <caret line="48" column="50" lean-forward="false" selection-start-line="48" selection-start-column="50" selection-end-line="48" selection-end-column="50" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="393">
-          <caret line="281" column="35" lean-forward="false" selection-start-line="281" selection-start-column="35" selection-end-line="281" selection-end-column="35" />
+        <state relative-caret-position="270">
+          <caret line="33" column="67" lean-forward="true" selection-start-line="33" selection-start-column="67" selection-end-line="33" selection-end-column="67" />
           <folding>
             <element signature="e#33#85#0" expanded="true" />
             <element signature="e#7017#7370#0" expanded="false" />
@@ -784,6 +799,34 @@
             <element signature="e#9356#10040#0" expanded="false" />
             <element signature="e#10119#10468#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="30" lean-forward="true" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
+          <folding>
+            <element signature="e#16#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-493">
+          <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="42" selection-end-column="68" />
+          <folding>
+            <element signature="e#35#79#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="120" column="32" lean-forward="false" selection-start-line="120" selection-start-column="32" selection-end-line="120" selection-end-column="32" />
+          <folding />
         </state>
       </provider>
     </entry>
