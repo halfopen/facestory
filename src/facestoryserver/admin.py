@@ -97,6 +97,9 @@ def add_admin(app):
     class LogView(MyBaseModelView):
         column_default_sort = ('op_time', True)
 
+    class FaceStoryTagView(MyBaseModelView):
+        pass
+
     Babel(app)
     app.config['BABEL_DEFAULT_LOCALE'] = 'zh_CN'
     app.config['BASIC_AUTH_USERNAME'] = 'john'
@@ -105,4 +108,5 @@ def add_admin(app):
     admin.add_view(UserInfoView(UserInfo, db.session, name=u"微信用户"))
     admin.add_view(FaceStoryView(FaceStory, db.session, name=u"自拍记录"))
     admin.add_view(LogView(Log, db.session, name=u"操作日志"))
+    admin.add_view(FaceStoryTagView(FaceStoryTag, db.session, name=u"标签"))
     return app

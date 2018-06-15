@@ -88,6 +88,22 @@ class UserInfo(db.Model):
         return "<UserInfo "+self.nick_name+" "+self.openid+" >"
 
 
+class FaceStoryTag(db.Model):
+    """
+        标签
+    """
+    __tablename__ = "face_story_tag"
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    name = db.Column(db.VARCHAR(256), unique=True)
+    face_story = db.relationship('FaceStory', backref='face_story_tag')
+
+    def __init__(self, name=""):
+        self.name = name
+
+    def __repr__(self):
+        return self.name
+
+
 class FaceStory(db.Model):
     """
         一个自拍记录
@@ -104,9 +120,11 @@ class FaceStory(db.Model):
     # 日期
     date = db.Column(db.DateTime)
     # 自拍结果
-    story_json = db.Column(db.TEXT)
+    story_json = db.Column(db.TEXT, default="")
     # 点赞
     likes = db.relationship('UserInfo', secondary=face_story_likes)
+    # 标签
+    tag = db.Column(db.Integer, db.ForeignKey('face_story_tag.id'))
     # 是否分享到广场
     in_square = db.Column(db.Boolean, default=False)
 
@@ -122,17 +140,16 @@ class FaceStory(db.Model):
         d['in_square'] = self.in_square
         return d
 
-    def __init__(self, openid="", nick_name="", avatar_url="", story_json="", like=0, in_square=False):
+    def __init__(self, openid="", nick_name="", avatar_url="", story_json="", in_square=False):
         self.openid = openid
         self.nick_name = nick_name
         self.avatar_url = avatar_url
         self.date = datetime.utcnow()
         self.story_json = story_json
-        self.like = like
         self.in_square = in_square
 
     def __repr__(self) -> str:
-        return "<FaceStory "+str(self.id)+self.openid+" "+self.nick_name+" "+str(self.date)+" "+str(self.like) + str(self.in_square)+">"
+        return "<FaceStory "+str(self.id)+self.openid+" "+self.nick_name+" "+str(self.date)+" "+ str(self.in_square)+">"
 
 
 class Log(db.Model):
