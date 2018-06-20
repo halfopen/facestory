@@ -16,9 +16,9 @@ var update_storys = function(_this, is_first){
                 my_storys: res.data.reverse()
             });
             if(!is_first){
-                wx.showToast({
-                    title: '更新成功',
-                });
+                // wx.showToast({
+                //     title: '更新成功',
+                // });
                 wx.stopPullDownRefresh();
             }
             }
@@ -57,6 +57,7 @@ Page({
   onShow: function () {
     console.log('onshow')
     util.logger.log("进入我的")
+    update_storys(this, false);
   },
 
   /**
@@ -105,5 +106,27 @@ Page({
           url: '/pages/selfie_result/selfie_result?story=' + encodeURIComponent(JSON.stringify(story)),
       })
       console.log(this.data.my_storys[id])
+  },
+  longTapStory: function(e){
+      let storyId = e.currentTarget.dataset.storyId;
+      let _this = this;
+      console.log(storyId)
+      wx.showModal({
+          title: '是否删除',
+          content: '',
+          success:function(e){
+              console.log(e, e.confirm)
+              if(e.confirm==true){
+                  wx.request({
+                      url: config.STORY_API+"?id="+storyId,
+                      method:"DELETE",
+                      complete: function(e){
+                          console.log(e)
+                          update_storys(_this, false)
+                      }
+                  })
+              }
+          }
+      })
   }
 })

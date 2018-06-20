@@ -7,13 +7,13 @@
     </view>
     <!-- 我的自拍记录 -->
     <view   class="my-story-container">
-        <view class="my-story-title"><text>我的拍照记录</text></view>
+        <view class="my-story-title"><text>拍照记录</text><text style='font-size:small'>(长按删除)</text></view>
         <view class="my-story-item"  wx:for="{{my_storys}}" wx:key="id">
             <!-- 参数需要以data-开头 -->
             <view >
-                <view  class="my-story-item-image"><image data-id='{{index}}' data-story-id="{{item.id}}" bindtap='clickStory'  src="{{item.story_json.image_url}}" /></view>
+                <view  class="my-story-item-image"><image data-id='{{index}}' data-story-id="{{item.id}}" bindtap='clickStory'  bindlongpress='longTapStory'  src="{{item.story_json.image_url}}" /></view>
                 <view class="my-story-item-desc"><text>气虚，肾虚. 起居养生：早睡早起，保证睡眠充足，四季起居有常；适度运动，避免过度体力劳动</text></view>
-                <view data-id='{{index}}' data-story-id="{{item.id}}" bindtap='clickStory'  class="my-story-item-time" >{{item.date}}</view>
+                <view data-id='{{index}}' data-story-id="{{item.id}}"   bindlongpress='longTapStory'  bindtap='clickStory'  class="my-story-item-time" >{{item.date}}</view>
             </view>
         </view>
     </view>

@@ -33,7 +33,7 @@ Page({
       if('undefined'!=typeof(options.story)){
             var _this = this;
             var story = JSON.parse( decodeURIComponent(options.story));
-            console.log(app.globalData.openid == story.openid, app.globalData.openid , story.openid);
+            console.log(story, app.globalData.openid == story.openid, app.globalData.openid , story.openid);
             if(app.globalData.openid== story.openid){
                 is_my_story = true;
             }
