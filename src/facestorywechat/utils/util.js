@@ -32,18 +32,12 @@ var sendLog = function(opContent, opType){
                 url: config.LOG_API,
                 method:"POST",
                 data:{
-                    "data":{
-                        "type":"log",
-                        "attributes":{
-                            "openid":openid,
-                            "op_content":opContent,
-                            "op_type":opType,
-                        }
-                    }
+                    "openid":openid,
+                    "op_content":opContent,
+                    "op_type":opType,
                 }, 
                 header:{
-                    "Content-Type": "application/vnd.api+json",
-                    "Accept": "application/vnd.api+json"
+                    "Content-Type":"application/json"
                 }
             })
         },

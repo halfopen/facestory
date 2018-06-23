@@ -157,21 +157,18 @@ def apply(img):
         max_prob = np.amax(prob)*100
         region_result = dict()
         region_result['prob'] = max_prob
-        region_result['type'] = y
-
-
-        print("【 %s 】\t %s %f%%" % (region_name, y, max_prob))
+        region_result['type'] = FEATURE_TRANS.get(y)
 
         for region in analysis["face_regions"]:
             if region["name"] == region_name:
                 for feature in region["features"]:
-                    if feature["name"] == y:
-                        # print(fill(feature["analysis"], width=18))
+                    print(feature["name"], FEATURE_TRANS.get(y), y)
+                    if feature["name"] == FEATURE_TRANS.get(y):
                         print(feature['analysis'])
                         region_result['detail'] = feature['analysis']
         print(" ")
         result[region_name] = region_result
-
+    print(result)
     return result
 
 

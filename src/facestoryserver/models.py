@@ -127,6 +127,8 @@ class FaceStory(db.Model):
     tag = db.Column(db.Integer, db.ForeignKey('face_story_tag.id'))
     # 是否分享到广场
     in_square = db.Column(db.Boolean, default=False)
+    # 是否已删除
+    is_deleted = db.Column(db.Boolean, default=False)
 
     def to_dict(self):
         d = dict()
@@ -138,15 +140,17 @@ class FaceStory(db.Model):
         d['date'] = self.date.strftime("%Y-%m-%d %H:%M:%S")
         d['like'] = [u.to_dict() for u in self.likes]
         d['in_square'] = self.in_square
+        d['is_deleted'] = self.is_deleted
         return d
 
-    def __init__(self, openid="", nick_name="", avatar_url="", story_json="", in_square=False):
+    def __init__(self, openid="", nick_name="", avatar_url="", story_json="", in_square=False, is_deleted=False):
         self.openid = openid
         self.nick_name = nick_name
         self.avatar_url = avatar_url
         self.date = datetime.utcnow()
         self.story_json = story_json
         self.in_square = in_square
+        self.is_deleted = is_deleted
 
     def __repr__(self) -> str:
         return "<FaceStory "+str(self.id)+self.openid+" "+self.nick_name+" "+str(self.date)+" "+ str(self.in_square)+">"
@@ -169,6 +173,16 @@ class Log(db.Model):
     # 备注
     remark = db.Column(db.VARCHAR(256), nullable=True)
 
+    def to_dict(self):
+        d = dict()
+        d['id'] = self.id
+        d['openid'] = self.openid
+        d['op_type'] = self.op_type
+        d['op_content'] = self.op_content
+        d['op_time'] = self.op_time.strftime('%Y-%m-%d %H:%M:%S')
+        d['remark'] = self.remark
+        return d
+
     def __init__(self, openid="", op_type=0, op_content="", remark=""):
         self.openid = openid
         self.op_type = op_type
@@ -178,3 +192,11 @@ class Log(db.Model):
 
     def __repr__(self):
         return "<Log "+self.openid+" "+self.op_content+">"
+
+
+class LogEncoder(json.JSONEncoder):
+
+    def default(self, o):
+        if isinstance(o, Log):
+            return o.to_dict()
+        return json.JSONEncoder.default(self, o)

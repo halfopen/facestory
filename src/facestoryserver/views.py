@@ -9,11 +9,11 @@ from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileRequired, FileAllowed
 from wtforms import SubmitField
 from flask_uploads import *
-from constant import UPLOAD_DIR, GET_APP_ID_URL
+from constant import UPLOAD_DIR, GET_APP_ID_URL, FEATURE_TRANS
 from face_reading_svm import apply
 from json_objs import Node, Result
 from db import db
-from models import FaceStory, UserInfo, Log
+from models import FaceStory, UserInfo, Log, LogEncoder
 import emotion_gender_processor as eg_processor
 import flask_restless
 import cv2
@@ -23,15 +23,49 @@ import logging
 
 
 def create_view(app, db):
-    manager = flask_restless.APIManager(app, flask_sqlalchemy_db=db)
     photos = UploadSet('photos', IMAGES)
     configure_uploads(app, photos)
     patch_request_class(app, size=64*1024*1024)  # 设置最大文件大小，　size默认时64*1024*1024
 
-    # 添加restful api , 请求方法　http://flask-restless.readthedocs.io/en/latest/fetching.html
-    manager.create_api(Log, methods=['GET', 'POST', 'DELETE'])
-    manager.create_api(FaceStory, methods=['GET', 'POST', 'DELETE'])
-    manager.create_api(UserInfo, methods=['GET', 'POST', 'DELETE'])
+    @app.route('/log', methods=['GET', 'POST'])
+    def log_list():
+        """
+            log 的　list操作
+        :return:
+        """
+        # 查看所有日志
+        if request.method == "GET":
+            page = request.args.get("page", 0, int)
+            logs = Log.query.order_by(Log.op_time.desc()).paginate(page, per_page=10, error_out=False)
+            return Response(json.dumps(logs.items, cls=LogEncoder), mimetype="application/json")
+        # 提交一条日志
+        elif request.method == "POST":
+            if request.get_json() is not None:
+                json_dict = request.get_json()
+                json_dict.setdefault(" ")
+                openid=json_dict.get('openid')
+                op_content=json_dict.get("op_content")
+                op_type=json_dict.get("op_type")
+                remark=json_dict.get("remark")
+            else:
+                openid = request.form.get('openid')
+                op_content = request.form.get("op_content", default=" ")
+                op_type = request.form.get("op_type", default=" ")
+                remark = request.form.get("remark", default=" ")
+
+            log_obj = Log(openid=openid, op_content=op_content, op_type=op_type, remark=remark)
+            db.session.add(log_obj)
+            db.session.flush()
+            db.session.refresh(log_obj)
+            db.session.commit()
+            return Response(json.dumps(log_obj.to_dict()), mimetype="application/json")
+        else:
+            pass
+
+    @app.route('/log/<int:id>', methods=['GET', 'DELETE'])
+    def log(id=-1):
+        log_obj = Log.query.get(id)
+        return Response(json.dumps(log_obj.to_dict()), mimetype="application/json")
 
     @app.route('/user_info', methods=['GET', 'POST'])
     def user_info():
@@ -114,8 +148,9 @@ def create_view(app, db):
             abort(500, "没有找到人脸")
         print(face_detail_dict.keys())
         for k in face_detail_dict.keys():
+            print(face_detail_dict[k])
             face_detail.append(Node(
-                contents=[face_detail_dict[k]['type'] + "\n" + face_detail_dict[k]['detail']],
+                contents=[str(face_detail_dict[k]['type']) + "\n" + str(face_detail_dict[k]['detail'])],
                 dtype="text",
                 style="padding-top:10px").to_dict())
 
@@ -238,6 +273,11 @@ def create_view(app, db):
                 db.session.delete(story)
                 db.session.commit()
             return Response(json.dumps({"code":0, "message":"删除成功"}), mimetype='application/json')
+
+    @app.route('/story/<int:id>', methods=["GET"])
+    def get_story(id=-1):
+        story_obj = FaceStory.query.get(id)
+        return Response(json.dumps(story_obj.to_dict()), mimetype="application/json")
 
     @app.route('/share_to_square', methods=['GET'])
     def share_to_square():
