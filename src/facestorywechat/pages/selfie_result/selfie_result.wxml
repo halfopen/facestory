@@ -8,13 +8,13 @@
     </view>
 
     <!-- 结果 -->
-    <view class='result' wx:for="{{results}}">
+    <view class='result' wx:for="{{results}}" wx:key="title">
         <!-- 标题栏 -->
         <view style='{{item.title.style}}' class='item-title'><text>{{item.title}}</text><text style='item.more.style' bindtap='clickItemMore' class="item-more">{{item.more}}</text></view>
         <!-- 横线 -->
         <view class='item-line'></view>
         <!-- 具体内容 -->
-        <view style='{{item.detail.style}}' class="item-detail" wx:for="item.detail.contents" wx:for-item="nodei" wx:for-index="idx">
+        <view style='{{item.detail.style}}' class="item-detail" wx:for="item.detail.contents" wx:for-item="nodei" wx:for-index="idx" wx:key="dtype">
             <!-- 文本数据 -->
             <view style='{{item.detail.contents[idx].style}}' wx:if="{{ item.detail.contents[idx].dtype=='text'}}">
             
@@ -33,10 +33,11 @@
     </view>
     <!-- 分享 , 用户本身才能看到-->
     <view class='share-container'>
-        <view class="btn btn-share" bindtap='clickShareFriends'>分享给好友</view>
-         <view data-story-id="{{story_id}}" data-in-square="{{in_square}}" wx:if="{{is_my_story}}" bindtap="clickShareStory" class="btn btn-share">
+        <button class="btn btn-small" open-type="share" bindtap='clickShareFriends'>分享给好友</button>
+         <button data-story-id="{{story_id}}" data-in-square="{{in_square}}" wx:if="{{is_my_story}}" bindtap="clickShareStory" class="btn btn-small">
             <block wx:if="{{in_square>0}}">从广场撤回</block>
             <block wx:else>分享到广场</block>
-        </view>
+        </button>
+        <button class="btn btn-small" bindtap="clickSave">选择存储</button>
     </view>
 </view>

@@ -99,14 +99,16 @@ Page({
   onShareAppMessage: function (res) {
       console.log("share", res);
       return {
-          title: 'face story',
-          path: '/pages/selfie_result/selfie_result?story='+encodeURIComponent(JSON.stringify(this.data.story)),
+          title: '面部分析结果',
+          path: '/pages/selfie_result/selfie_result?share=1&story='+encodeURIComponent(JSON.stringify(this.data.story)),
           imageUrl:this.data.head_pic,
           success:function(res){
 
           }
       }
   },
+
+  // 点击分享按钮
   clickShareStory:function(e){
       wx.showLoading({
           title: '请求中',
@@ -140,11 +142,11 @@ Page({
         }
     })
   },
-
-  clickShareFriends: function(e){
-      console.log("click share")
-      wx.showShareMenu({
-          withShareTicket: true
-      });
+  
+  // 点击保存按钮
+  clickSave: function(e){
+      wx.navigateTo({
+          url: '/pages/save_result/save_result?story_id='+this.data.story_id,
+      })
   }
 })

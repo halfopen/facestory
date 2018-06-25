@@ -1,6 +1,6 @@
 # coding: utf-8
 from flask import Flask
-from constant import UPLOAD_DIR, DATA_BASE_URI
+from constant import UPLOAD_DIR, DATA_BASE_URI,BASE_DIR
 from views import create_view
 from db import db
 from admin import add_admin
@@ -26,4 +26,5 @@ if User.query.first() is None:
 
 if __name__ == '__main__':
 
-    app.run(host='0.0.0.0')
+    app.run(host='0.0.0.0', port=5000, ssl_context=(BASE_DIR+"/1_facestory.cn_bundle.crt",
+                                                    BASE_DIR+"/2_facestory.cn.key"))

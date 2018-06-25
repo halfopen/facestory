@@ -1,6 +1,6 @@
 /* pages/selfie_result/selfie_result.wxss */
 .container{
-    padding: 20rpx 10rpx;
+    padding: 0;
     margin: auto 40rpx;
     overflow: visible;
 }
@@ -50,11 +50,6 @@
     float:right;
     color:#E51C23;
 
-}
-
-.btn-share{
-    float: left;
-    margin: 20rpx;
 }
 
 /* 点赞 */

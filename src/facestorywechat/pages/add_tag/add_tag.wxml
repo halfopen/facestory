@@ -1,0 +1,26 @@
+<!--pages/add_tag/add_tag.wxml-->
+<view>
+    <!-- 性别 -->
+    <picker class="form-item" bindchange="bindPickerChange" value="{{gender_index}}" range="{{genders}}">
+        <view class="picker">
+            性别：{{genders[gender_index]}}
+        </view>
+    </picker>
+    <!-- 输入姓名 -->
+    <view class='form-item'>
+        <span>姓名:</span>
+        <input style='display:inline-block; overflow:visible' placeholder='请输入姓名或称呼' bindinput='inputName'></input>
+    </view>
+    <!-- 出生年月 -->
+    <view class="section form-item">
+        <picker mode="date" value="{{birth}}" start="1900-01-01" end="2018-09-01" bindchange="bindDateChange">
+            <view class="picker">
+                出生年月: {{birth}}
+            </view>
+        </picker>
+    </view>
+</view>
+
+<view class='btn-container'>
+    <button class="btn btn-small" bindtap="tapAdd"> 添加</button>
+</view>

@@ -8,7 +8,9 @@
     "pages/selfie_result/selfie_result",
     "pages/share/share",
     "pages/getuserinfo/getuserinfo",
-    "pages/top/top"
+    "pages/top/top",
+    "pages/save_result/save_result",
+    "pages/add_tag/add_tag"
   ],
   "window":{
     "backgroundTextStyle":"light",

@@ -64,6 +64,18 @@
 					"name": "top",
 					"pathName": "pages/top/top",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "save_result",
+					"pathName": "pages/save_result/save_result",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "add_tag",
+					"pathName": "pages/add_tag/add_tag",
+					"query": ""
 				}
 			]
 		}

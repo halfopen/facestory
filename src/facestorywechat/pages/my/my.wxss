@@ -1,6 +1,6 @@
 /* pages/my/my.wxss */
 page{
-
+    padding: 0;
 }
 .container{
     padding: 0;
@@ -79,4 +79,20 @@ page{
 .my-story-title{
     background: white;
     border-radius:10rpx 10rpx 40rpx 40rpx;
+}
+
+.my-tag{
+    position:relative;
+    display:inline-block;
+    width:100%;
+    padding-top: 30rpx;
+}
+.my-tag-name{
+    float:left;
+    padding-left: 20rpx;
+}
+.my-tag-detail{
+    float:right;
+    padding-right: 20rpx;
+    color:coral;
 }

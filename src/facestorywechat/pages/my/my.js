@@ -8,12 +8,12 @@ const app = getApp();
  */
 var update_storys = function(_this, is_first){
     wx.request({
-        url: config.GET_MY_STORYS_API + "?openid=" + app.globalData.openid,
+        url: config.FACE_STORY_TAG_API + "?openid=" + app.globalData.openid,
         success: function (res) {
             console.log(res);
             if(res.statusCode==200){
             _this.setData({
-                my_storys: res.data.reverse()
+                my_storys: res.data
             });
             if(!is_first){
                 // wx.showToast({
@@ -32,7 +32,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-      my_storys:[]
+      my_storys:[],
   },
 
   /**
@@ -95,20 +95,27 @@ Page({
   onShareAppMessage: function () {
   
   }, 
-  
-
+  /**
+   * 点击查看详情
+   */
   clickStory: function (e) {
       let id = e.target.dataset.id;
+      let tagIndex = e.currentTarget.dataset.tagIndex;
       console.log(e, e.target.dataset.storyId);
-      let story = this.data.my_storys[id];
+      console.log(id, tagIndex);
+      let story = this.data.my_storys[tagIndex].face_storys[id];
       console.log(this.data.my_storys);
       wx.navigateTo({
           url: '/pages/selfie_result/selfie_result?story=' + encodeURIComponent(JSON.stringify(story)),
       })
       console.log(this.data.my_storys[id])
   },
+  /**
+   * 长按删除
+   */
   longTapStory: function(e){
       let storyId = e.currentTarget.dataset.storyId;
+      
       let _this = this;
       console.log(storyId)
       wx.showModal({
@@ -127,6 +134,15 @@ Page({
                   })
               }
           }
+      })
+  },
+
+  /**
+   * 点击添加家人和朋友
+   */
+  tapAddTag: function(e){
+      wx.navigateTo({
+          url: '/pages/add_tag/add_tag',
       })
   }
 })

@@ -8,14 +8,22 @@
     <!-- 我的自拍记录 -->
     <view   class="my-story-container">
         <view class="my-story-title"><text>拍照记录</text><text style='font-size:small'>(长按删除)</text></view>
-        <view class="my-story-item"  wx:for="{{my_storys}}" wx:key="id">
+
+        <view class=""  wx:for="{{my_storys}}" wx:for-item="tag" wx:key="id" wx:for-index="tagindex">
+            <view class="my-tag">
+                <text class="my-tag-name">{{tag.name}}</text>
+                <text class="my-tag-detail">{{tag.id}}></text>
+            </view>
             <!-- 参数需要以data-开头 -->
-            <view >
-                <view  class="my-story-item-image"><image data-id='{{index}}' data-story-id="{{item.id}}" bindtap='clickStory'  bindlongpress='longTapStory'  src="{{item.story_json.image_url}}" /></view>
+            <view class="my-story-item" wx:for="{{tag.face_storys}}"  wx:key="id">
+                <view  class="my-story-item-image">
+                    <image data-tag-index="{{tagindex}}" data-id='{{index}}' data-story-id="{{item.id}}" bindtap='clickStory'  bindlongpress='longTapStory'  src="{{item.story_json.image_url}}" />
+                </view>
                 <view class="my-story-item-desc"><text>气虚，肾虚. 起居养生：早睡早起，保证睡眠充足，四季起居有常；适度运动，避免过度体力劳动</text></view>
-                <view data-id='{{index}}' data-story-id="{{item.id}}"   bindlongpress='longTapStory'  bindtap='clickStory'  class="my-story-item-time" >{{item.date}}</view>
+                <view data-tag-index="{{tagindex}}" data-id='{{index}}' data-story-id="{{item.id}}"   bindlongpress='longTapStory'  bindtap='clickStory'  class="my-story-item-time" >{{item.date}}</view>
             </view>
         </view>
     </view>
+    <text bindtap='tapAddTag'>添加家人和朋友</text>
     <button open-type='contact'> 联系客服 </button>
 </view>

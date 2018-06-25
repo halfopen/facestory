@@ -94,11 +94,28 @@ class FaceStoryTag(db.Model):
     """
     __tablename__ = "face_story_tag"
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    # 微信的用户openid
+    openid = db.Column(db.VARCHAR(256))
     name = db.Column(db.VARCHAR(256), unique=True)
+    gender = db.Column(db.VARCHAR(2), default="男")
+    birth = db.Column(db.VARCHAR(16), default="1900-01-01")
     face_story = db.relationship('FaceStory', backref='face_story_tag')
 
-    def __init__(self, name=""):
+    def __init__(self, name="", openid="", gender="男", birth="1900-01-01"):
         self.name = name
+        self.openid = openid
+        self.gender = gender
+        self.birth = birth
+
+    def to_dict(self):
+        d = dict()
+        d['id'] = self.id
+        d['openid'] = self.openid
+        d['name'] = self.name
+        d['gender'] = self.gender
+        d['birth'] = self.birth
+        d['face_storys'] = [s.to_dict() for s in self.face_story]
+        return d
 
     def __repr__(self):
         return self.name
@@ -123,6 +140,8 @@ class FaceStory(db.Model):
     story_json = db.Column(db.TEXT, default="")
     # 点赞
     likes = db.relationship('UserInfo', secondary=face_story_likes)
+    # 电宰点赞数
+    like_num = db.Column(db.Integer, default=0)
     # 标签
     tag = db.Column(db.Integer, db.ForeignKey('face_story_tag.id'))
     # 是否分享到广场
@@ -139,8 +158,15 @@ class FaceStory(db.Model):
         d['story_json'] = json.loads(self.story_json)
         d['date'] = self.date.strftime("%Y-%m-%d %H:%M:%S")
         d['like'] = [u.to_dict() for u in self.likes]
+        d['like_num'] = self.like_num
         d['in_square'] = self.in_square
         d['is_deleted'] = self.is_deleted
+        if self.tag is not None:
+            tag = FaceStoryTag.query.get(self.tag)
+            d['tag'] = {
+                'name': tag.name,
+                'id': tag.id
+            }
         return d
 
     def __init__(self, openid="", nick_name="", avatar_url="", story_json="", in_square=False, is_deleted=False):
@@ -194,9 +220,9 @@ class Log(db.Model):
         return "<Log "+self.openid+" "+self.op_content+">"
 
 
-class LogEncoder(json.JSONEncoder):
+class ModelEncoder(json.JSONEncoder):
 
     def default(self, o):
-        if isinstance(o, Log):
+        if isinstance(o, db.Model):
             return o.to_dict()
         return json.JSONEncoder.default(self, o)

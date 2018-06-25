@@ -1,0 +1,9 @@
+{
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "保存结果到用户",
+    "backgroundColor": "#eeeeee",
+    "backgroundTextStyle": "black",
+    "enablePullDownRefresh": true,
+    "disableScroll": false
+}

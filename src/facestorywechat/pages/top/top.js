@@ -4,7 +4,7 @@ let config = require("../../config.js");
 var update_top_storys = function(_this, is_first){
     console.log("update")
     wx.request({
-        url: config.TOP_STORYS_API,
+        url: config.FACESTORYS_API+"?top=10",
         success: function(res){
             console.log(res);
             _this.setData({

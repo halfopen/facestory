@@ -1,0 +1,42 @@
+/* pages/save_result/save_result.wxss */
+
+page {
+    background: white;
+    padding: 20rpx;
+    width: auto;
+}
+
+.tag {
+    background: #dedede;
+    padding: 20rpx;
+    margin-top: 5rpx;
+    border-radius: 20rpx;
+}
+
+.tag.selected {
+    background: #e51c23;
+    color: white;
+}
+
+.btn-save-container {
+    padding-top: 20rpx;
+    text-align: center;
+    width: 100%;
+}
+
+.btn-save {
+    display: inline-block;
+    border: 1px solid #e51c23;
+    border-radius: 30rpx;
+    padding: 0rpx 30rpx;
+}
+
+.btn-save image {
+    width: 60rpx;
+    height: 60rpx;
+}
+
+.btn-save text {
+    display: block;
+    font-size: small;
+}

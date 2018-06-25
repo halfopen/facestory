@@ -1,0 +1,26 @@
+/* pages/add_tag/add_tag.wxss */
+page{
+    background: white;
+}
+
+.btn-container{
+    text-align: center;
+    padding-top: 20rpx;
+}
+
+button.btn-small{
+    float: none;
+    display: inline-block;
+    background: #259B24;
+}
+
+.form-item{
+    border: 1px solid gainsboro;
+    border-top: 0px;
+    padding: 20rpx;
+}
+
+.form-item:first-child{
+    content: "";
+    border-top: 1px solid gainsboro;
+}

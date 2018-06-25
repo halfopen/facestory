@@ -162,13 +162,13 @@ def apply(img):
         for region in analysis["face_regions"]:
             if region["name"] == region_name:
                 for feature in region["features"]:
-                    print(feature["name"], FEATURE_TRANS.get(y), y)
+                    # print(feature["name"], FEATURE_TRANS.get(y), y)
                     if feature["name"] == FEATURE_TRANS.get(y):
-                        print(feature['analysis'])
+                        # print(feature['analysis'])
                         region_result['detail'] = feature['analysis']
-        print(" ")
+        # print(" ")
         result[region_name] = region_result
-    print(result)
+    # print(result)
     return result
 
 

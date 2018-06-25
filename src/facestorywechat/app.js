@@ -105,5 +105,6 @@ App({
   globalData: {
     userInfo: null,
     openid:null
-  }
+  },
+  config:config
 })

@@ -1,0 +1,12 @@
+<!--pages/save_result/save_result.wxml-->
+<text>将结果存储至用户：</text>
+
+<view  wx:for="{{tags}}" wx:key="id" data-index="{{index}}" data-selected="{{selected}}"  class="tag {{index==selected?'selected':''}}" bindtap='tapTag'>
+    <view   >{{item.name}}</view>
+</view>
+<view class="btn-save-container">
+    <view class="btn-save" bindtap='tapSaveResult'>
+        <image src="/images/save.png" />
+        <text >保存结果</text>
+    </view>
+</view>

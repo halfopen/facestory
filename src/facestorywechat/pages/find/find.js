@@ -9,10 +9,10 @@ const app = getApp();
  */
 var update_storys = function (_this, is_first) {
     wx.request({
-        url: config.GET_SQUARE_STORYS_API,
+        url: config.FACESTORYS_API+"?in_square=1",
         success: function (res) {
             console.log(res);
-            if(res.statusCode==200){
+            if(res.statusCode==200 && res.data.code!=-1){
             _this.setData({
                 shared_storys: res.data
             });
@@ -40,7 +40,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-      update_storys(this, true);
+      
   },
 
   /**
@@ -55,6 +55,7 @@ Page({
    */
   onShow: function () {
     util.logger.log("进入广场");
+    update_storys(this, true);
   },
 
   /**
