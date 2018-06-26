@@ -24,6 +24,6 @@
             </view>
         </view>
     </view>
-    <text bindtap='tapAddTag'>添加家人和朋友</text>
-    <button open-type='contact'> 联系客服 </button>
+    <button bindtap='tapAddTag'>添加家人和朋友</button>
+    <!-- <button open-type='contact'> 联系客服 </button> -->
 </view>

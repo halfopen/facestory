@@ -13,14 +13,17 @@ from constant import UPLOAD_DIR, GET_APP_ID_URL, FEATURE_TRANS
 from face_reading_svm import apply
 from json_objs import Node, Result
 from db import db
-from models import *
+from models import User, UserInfo, FaceStoryTag, FaceStory, Log, ModelEncoder
 import emotion_gender_processor as eg_processor
-import flask_restless
 import cv2
 import json
 import requests
 import logging
 
+
+class JsonResponse(Response):
+    default_mimetype = "application/json"
+    
 
 def create_view(app, db):
     photos = UploadSet('photos', IMAGES)
@@ -37,17 +40,19 @@ def create_view(app, db):
         if request.method == "GET":
             page = request.args.get("page", 0, int)
             logs = Log.query.order_by(Log.op_time.desc()).paginate(page, per_page=10, error_out=False)
-            return Response(json.dumps(logs.items, cls=ModelEncoder), mimetype="application/json")
+            return JsonResponse(json.dumps(logs.items, cls=ModelEncoder))
         # 提交一条日志
         elif request.method == "POST":
-            if request.get_json() is not None: # 小程序请求方式
+            # 小程序请求方式
+            if request.get_json() is not None: 
                 json_dict = request.get_json()
                 json_dict.setdefault(" ")
                 openid=json_dict.get('openid')
                 op_content=json_dict.get("op_content")
                 op_type=json_dict.get("op_type")
                 remark=json_dict.get("remark")
-            else:   # 普通post请求方式
+            # 普通post请求方式
+            else:   
                 openid = request.form.get('openid')
                 op_content = request.form.get("op_content", default=" ")
                 op_type = request.form.get("op_type", default=" ")
@@ -55,17 +60,18 @@ def create_view(app, db):
 
             log_obj = Log(openid=openid, op_content=op_content, op_type=op_type, remark=remark)
             db.session.add(log_obj)
+            # 获取插入后的结果
             db.session.flush()
             db.session.refresh(log_obj)
             db.session.commit()
-            return Response(json.dumps(log_obj.to_dict()), mimetype="application/json")
+            return JsonResponse(json.dumps(log_obj.to_dict()))
         else:
             pass
 
     @app.route('/log/<int:id>', methods=['GET', 'DELETE'])
     def log(id=-1):
         log_obj = Log.query.get(id)
-        return Response(json.dumps(log_obj.to_dict()), mimetype="application/json")
+        return JsonResponse(json.dumps(log_obj.to_dict()))
 
     @app.route("/facestory_tag", methods=["GET", "POST"])
     def facestory_tag_list():
@@ -77,9 +83,10 @@ def create_view(app, db):
                 tags = FaceStoryTag.query.filter_by(openid=openid).order_by(FaceStoryTag.id).all()
             else:
                 tags = FaceStoryTag.query.order_by(FaceStoryTag.id).all()
-            return Response(json.dumps(tags, cls=ModelEncoder), mimetype="application/json")
+            return JsonResponse(json.dumps(tags, cls=ModelEncoder))
+        # 添加一个家属朋友用户
         elif request.method == "POST":
-            # 添加一个家属朋友用户
+            
             if request.get_json() is not None:
                 json_dict = request.get_json()
                 json_dict.setdefault(" ")
@@ -93,19 +100,19 @@ def create_view(app, db):
                 db.session.add(tag)
                 db.session.flush()
                 db.session.commit()
-                return Response(json.dumps(tag.to_dict()), mimetype="application/json")
+                return JsonResponse(json.dumps(tag.to_dict()))
 
     @app.route("/facestory_tag/<int:id>", methods=['GET', 'DELETE', 'UPDATE'])
     def facestory_tag(id):
         facestory_tag_obj = FaceStoryTag.query.get(id)
         if request.method == 'GET':
-            return Response(json.dumps(facestory_tag_obj), mimetype="application/json")
+            return JsonResponse(json.dumps(facestory_tag_obj))
         elif request.method == 'DELETE':
             db.session.delete(facestory_tag_obj)
             db.session.commit()
-            return Response(json.dumps({"code": 0, "message": "删除成功"}), mimetype='application/json')
+            return JsonResponse(json.dumps({"code": 0, "message": "删除成功"}))
         elif request.method == 'UPDATE':
-            return Response(json.dumps(facestory_tag_obj), mimetype="application/json")
+            return JsonResponse(json.dumps(facestory_tag_obj))
         else:
             pass
 
@@ -166,7 +173,7 @@ def create_view(app, db):
             res = user_info_obj.to_dict()
         else:
             pass
-        return Response(json.dumps(res), mimetype='application/json')
+        return JsonResponse(json.dumps(res))
 
     @app.route('/detect', methods=['POST'])
     def upload():
@@ -258,9 +265,9 @@ def create_view(app, db):
                 db.session.flush()
                 db.session.refresh(story)
                 db.session.commit()
-                return Response(json.dumps(story.to_dict()), mimetype='application/json')
+                return JsonResponse(json.dumps(story.to_dict()))
 
-        # return Response(story_json, mimetype='application/json')
+        # return Response(story_json)
 
     @app.route('/', methods=['GET', 'POST'])
     def upload_file():
@@ -287,7 +294,7 @@ def create_view(app, db):
         code = request.args.get("code")
         logging.info(code)
         req = requests.get(GET_APP_ID_URL + code)
-        return Response(req.content, mimetype='application/json')
+        return JsonResponse(req.content)
 
     @app.route('/facestory', methods=['GET'])
     def facestory_list():
@@ -309,7 +316,7 @@ def create_view(app, db):
                 ).order_by(FaceStory.like_num).limit(int(top)).all()
             else:
                 storys = FaceStory.query.all()
-            return Response(json.dumps(storys, cls=ModelEncoder), mimetype="application/json")
+            return JsonResponse(json.dumps(storys, cls=ModelEncoder))
         else:
             pass
 
@@ -324,11 +331,11 @@ def create_view(app, db):
             return
         if request.method == 'GET':
             res = story.to_dict()
-            return Response(json.dumps(res), mimetype='application/json')
+            return JsonResponse(json.dumps(res))
         elif request.method == 'DELETE':
             story.is_deleted = True
             db.session.commit()
-            return Response(json.dumps({"code":0, "message":"删除成功"}), mimetype='application/json')
+            return JsonResponse(json.dumps({"code":0, "message":"删除成功"}))
         elif request.method == "PUT":
             tag = request.args.get("tag", default=None, type=int)
             in_square = request.args.get("in_square")
@@ -339,7 +346,7 @@ def create_view(app, db):
                 # 是否分享到广场
                 story.in_square = in_square
             db.session.commit()
-            return Response(json.dumps(story.to_dict()), mimetype='application/json')
+            return JsonResponse(json.dumps(story.to_dict()))
 
     @app.route('/share_to_square', methods=['GET'])
     def share_to_square():
@@ -363,8 +370,7 @@ def create_view(app, db):
             db.session.refresh(story)
             db.session.commit()
             res = story.to_dict()
-        return Response(json.dumps(res), mimetype='application/json')
-
+        return JsonResponse(json.dumps(res))
 
     @app.errorhandler(500)
     def error500(error):
@@ -374,5 +380,5 @@ def create_view(app, db):
         :return:
         """
         print(error)
-        return Response(json.dumps({"code":-1, "message":str(error)}), mimetype="application/json")
+        return JsonResponse(json.dumps({"code":-1, "message":str(error)}))
     return app
