@@ -326,7 +326,7 @@ def create_view(app, db):
             res = story.to_dict()
             return Response(json.dumps(res), mimetype='application/json')
         elif request.method == 'DELETE':
-            db.session.delete(story)
+            story.is_deleted = True
             db.session.commit()
             return Response(json.dumps({"code":0, "message":"删除成功"}), mimetype='application/json')
         elif request.method == "PUT":
