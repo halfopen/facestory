@@ -6,7 +6,6 @@
 }
 .avatar-container{
     padding: 20rpx 0rpx;
-    margin-bottom: 60rpx;
 }
 .head-pic .avatar-container .avatar-container-image{
     width:200rpx;
@@ -17,6 +16,10 @@
     border:1px solid black;
     border-radius:100rpx;
 
+}
+
+.tag-name-container{
+    text-align: center;
 }
 
 .result{

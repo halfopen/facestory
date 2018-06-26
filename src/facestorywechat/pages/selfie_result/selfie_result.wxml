@@ -5,6 +5,7 @@
         <view class='avatar-container'>
             <image  class='avatar-container-image' src='{{head_pic}}'></image>
         </view>
+        <view class="tag-name-container"><text>{{tag.name}}</text></view>
     </view>
 
     <!-- 结果 -->

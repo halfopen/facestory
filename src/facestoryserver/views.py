@@ -95,7 +95,6 @@ def create_view(app, db):
                 db.session.commit()
                 return Response(json.dumps(tag.to_dict()), mimetype="application/json")
 
-
     @app.route("/facestory_tag/<int:id>", methods=['GET', 'DELETE', 'UPDATE'])
     def facestory_tag(id):
         facestory_tag_obj = FaceStoryTag.query.get(id)
@@ -314,7 +313,7 @@ def create_view(app, db):
         else:
             pass
 
-    @app.route('/facestory/<int:id>', methods=['GET', 'DELETE', 'UPDATE'])
+    @app.route('/facestory/<int:id>', methods=['GET', 'DELETE', 'PUT'])
     def story(id):
         """
             获取某个自拍记录
@@ -330,12 +329,14 @@ def create_view(app, db):
             db.session.delete(story)
             db.session.commit()
             return Response(json.dumps({"code":0, "message":"删除成功"}), mimetype='application/json')
-        elif request.method == "UPDATE":
-            tag = request.args.get("tag")
+        elif request.method == "PUT":
+            tag = request.args.get("tag", default=None, type=int)
             in_square = request.args.get("in_square")
             if tag is not None:
-                story.tag = tag
+                # 更新用户标签
+                story.tag = int(tag)
             if in_square is not None:
+                # 是否分享到广场
                 story.in_square = in_square
             db.session.commit()
             return Response(json.dumps(story.to_dict()), mimetype='application/json')

@@ -43,7 +43,8 @@ Page({
                 results: story.story_json.results,
                 is_my_story:is_my_story,
                 in_square: story.in_square+0,
-                story:story
+                story:story,
+                tag:story.tag
             })
       }
       
@@ -146,7 +147,7 @@ Page({
   // 点击保存按钮
   clickSave: function(e){
       wx.navigateTo({
-          url: '/pages/save_result/save_result?story_id='+this.data.story_id,
+          url: '/pages/save_result/save_result?story_id='+this.data.story_id+"&tag_id="+this.data.tag.id,
       })
   }
 })

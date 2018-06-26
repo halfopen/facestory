@@ -36,6 +36,7 @@ class User(db.Model):
         return self.id
 
 
+# 一对多关系
 face_story_likes = db.Table('face_story_likes', db.Model.metadata,
                             db.Column('face_story_id', db.Integer, db.ForeignKey('face_story.id')),
                             db.Column('user_info_id', db.Integer, db.ForeignKey('user_info.id')))
@@ -133,7 +134,6 @@ class FaceStory(db.Model):
     nick_name = db.Column(db.VARCHAR(256), nullable=False)
     # 用户头像
     avatar_url = db.Column(db.VARCHAR(1024), nullable=False)    # 这三个数据经常用到，这里冗余存起来
-
     # 日期
     date = db.Column(db.DateTime)
     # 自拍结果
