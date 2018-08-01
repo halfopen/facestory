@@ -97,7 +97,7 @@ class FaceStoryTag(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     # 微信的用户openid
     openid = db.Column(db.VARCHAR(256))
-    name = db.Column(db.VARCHAR(256), unique=True)
+    name = db.Column(db.VARCHAR(256))
     gender = db.Column(db.VARCHAR(2), default="男")
     birth = db.Column(db.VARCHAR(16), default="1900-01-01")
     face_story = db.relationship('FaceStory', backref='face_story_tag')

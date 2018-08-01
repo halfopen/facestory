@@ -1,0 +1,74 @@
+INFO:werkzeug:127.0.0.1 - - [01/Aug/2018 15:52:52] "GET /get_openid?code=081Iulrk0WDJjl1abZsk00Hhrk0Iulrq HTTP/1.1" 200 -
+[2018-08-01 15:52:52,590] ERROR in app: Exception on /user_info [POST]
+Traceback (most recent call last):
+  File "/home/h/PycharmProjects/facestoryserver/venv/lib/python3.5/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
+    context)
+  File "/home/h/PycharmProjects/facestoryserver/venv/lib/python3.5/site-packages/sqlalchemy/engine/default.py", line 507, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.IntegrityError: UNIQUE constraint failed: face_story_tag.name
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/h/PycharmProjects/facestoryserver/venv/lib/python3.5/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/h/PycharmProjects/facestoryserver/venv/lib/python3.5/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/h/PycharmProjects/facestoryserver/venv/lib/python3.5/site-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/h/PycharmProjects/facestoryserver/venv/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/h/PycharmProjects/facestoryserver/venv/lib/python3.5/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/h/PycharmProjects/facestoryserver/venv/lib/python3.5/site-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/h/code/facestory/src/facestoryserver/views.py", line 172, in user_info
+    db.session.commit()
+  File "/home/h/PycharmProjects/facestoryserver/venv/lib/python3.5/site-packages/sqlalchemy/orm/scoping.py", line 153, in do
+    return getattr(self.registry(), name)(*args, **kwargs)
+  File "/home/h/PycharmProjects/facestoryserver/venv/lib/python3.5/site-packages/sqlalchemy/orm/session.py", line 943, in commit
+    self.transaction.commit()
+  File "/home/h/PycharmProjects/facestoryserver/venv/lib/python3.5/site-packages/sqlalchemy/orm/session.py", line 467, in commit
+    self._prepare_impl()
+  File "/home/h/PycharmProjects/facestoryserver/venv/lib/python3.5/site-packages/sqlalchemy/orm/session.py", line 447, in _prepare_impl
+    self.session.flush()
+  File "/home/h/PycharmProjects/facestoryserver/venv/lib/python3.5/site-packages/sqlalchemy/orm/session.py", line 2254, in flush
+    self._flush(objects)
+  File "/home/h/PycharmProjects/facestoryserver/venv/lib/python3.5/site-packages/sqlalchemy/orm/session.py", line 2380, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/home/h/PycharmProjects/facestoryserver/venv/lib/python3.5/site-packages/sqlalchemy/util/langhelpers.py", line 66, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/home/h/PycharmProjects/facestoryserver/venv/lib/python3.5/site-packages/sqlalchemy/util/compat.py", line 187, in reraise
+    raise value
+  File "/home/h/PycharmProjects/facestoryserver/venv/lib/python3.5/site-packages/sqlalchemy/orm/session.py", line 2344, in _flush
+    flush_context.execute()
+  File "/home/h/PycharmProjects/facestoryserver/venv/lib/python3.5/site-packages/sqlalchemy/orm/unitofwork.py", line 391, in execute
+    rec.execute(self)
+  File "/home/h/PycharmProjects/facestoryserver/venv/lib/python3.5/site-packages/sqlalchemy/orm/unitofwork.py", line 556, in execute
+    uow
+  File "/home/h/PycharmProjects/facestoryserver/venv/lib/python3.5/site-packages/sqlalchemy/orm/persistence.py", line 181, in save_obj
+    mapper, table, insert)
+  File "/home/h/PycharmProjects/facestoryserver/venv/lib/python3.5/site-packages/sqlalchemy/orm/persistence.py", line 866, in _emit_insert_statements
+    execute(statement, params)
+  File "/home/h/PycharmProjects/facestoryserver/venv/lib/python3.5/site-packages/sqlalchemy/engine/base.py", line 948, in execute
+    return meth(self, multiparams, params)
+  File "/home/h/PycharmProjects/facestoryserver/venv/lib/python3.5/site-packages/sqlalchemy/sql/elements.py", line 269, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/home/h/PycharmProjects/facestoryserver/venv/lib/python3.5/site-packages/sqlalchemy/engine/base.py", line 1060, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/home/h/PycharmProjects/facestoryserver/venv/lib/python3.5/site-packages/sqlalchemy/engine/base.py", line 1200, in _execute_context
+    context)
+  File "/home/h/PycharmProjects/facestoryserver/venv/lib/python3.5/site-packages/sqlalchemy/engine/base.py", line 1413, in _handle_dbapi_exception
+    exc_info
+  File "/home/h/PycharmProjects/facestoryserver/venv/lib/python3.5/site-packages/sqlalchemy/util/compat.py", line 203, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/home/h/PycharmProjects/facestoryserver/venv/lib/python3.5/site-packages/sqlalchemy/util/compat.py", line 186, in reraise
+    raise value.with_traceback(tb)
+  File "/home/h/PycharmProjects/facestoryserver/venv/lib/python3.5/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
+    context)
+  File "/home/h/PycharmProjects/facestoryserver/venv/lib/python3.5/site-packages/sqlalchemy/engine/default.py", line 507, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) UNIQUE constraint failed: face_story_tag.name [SQL: 'INSERT INTO face_story_tag (openid, name, gender, birth) VALUES (?, ?, ?, ?)'] [parameters: ('oTM7q4k6gFzXGb6JFBY-dTC_HdEY', '我的', '男', '1900-01-01')] (Background on this error at: http://sqlalche.me/e/gkpj)
+(sqlite3.IntegrityError) UNIQUE constraint failed: face_story_tag.name [SQL: 'INSERT INTO face_story_tag (openid, name, gender, birth) VALUES (?, ?, ?, ?)'] [parameters: ('oTM7q4k6gFzXGb6JFBY-dTC_HdEY', '我的', '男', '1900-01-01')] (Background on this error at: http://sqlalche.me/e/gkpj)
+127.0.0.1 - - [01/Aug/2018 15:52:52] "POST /user_info HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Aug/2018 15:52:52] "POST /user_info HTTP/1.1" 200 -
