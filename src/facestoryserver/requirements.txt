@@ -11,7 +11,7 @@ defusedxml==0.5.0
 dlib==19.10.0
 Flask==0.12.4
 Flask-Admin==1.5.1
-Flask-AppBuilder==1.11.1
+Flask-AppBuilder==3.3.2
 Flask-Babel==0.11.1
 Flask-BabelEx==0.9.3
 Flask-BasicAuth==0.2.0
