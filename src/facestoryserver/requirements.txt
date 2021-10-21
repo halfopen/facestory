@@ -1,5 +1,5 @@
 aniso8601==3.0.0
-Babel==2.5.3
+Babel==2.9.1
 backcall==0.1.0
 certifi==2018.4.16
 chardet==3.0.4
